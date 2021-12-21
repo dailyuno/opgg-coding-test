@@ -99,11 +99,31 @@
         제어 와드 {{ game.stats.ward.visionWardsBought }}
       </div>
     </div>
+    <div class="match-game-item__teams">
+      <div
+        class="match-game-item__team"
+        v-for="team in teams"
+        :key="team.teamId"
+      >
+        <div
+          class="match-game-item__team-player"
+          v-for="(player, index) in team.players"
+          :key="index"
+        >
+          <img :src="player.champion.imageUrl" alt="" />
+          <span>
+            {{ player.summonerName }}
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import moment from "moment";
+import { getMatchDetail } from "~/api/opgg";
 
 export default {
   props: {
@@ -111,7 +131,13 @@ export default {
       type: Object,
     },
   },
+  data() {
+    return {
+      teams: [],
+    };
+  },
   computed: {
+    ...mapGetters("summoner", ["summoner"]),
     getDateFromNow() {
       return moment(this.game.createDate, "X").fromNow();
     },
@@ -121,6 +147,16 @@ export default {
         .format("mm분ss초")
         .replace(/^0/, "");
     },
+  },
+  async fetch() {
+    try {
+      const {
+        data: { teams },
+      } = await getMatchDetail(this.summoner.name);
+      this.teams = teams;
+    } catch (e) {
+      console.log(e);
+    }
   },
 };
 </script>
@@ -208,6 +244,35 @@ export default {
 
       img {
         width: 22px;
+      }
+    }
+  }
+
+  &__teams {
+    display: flex;
+  }
+
+  &__team {
+    width: 85px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &-player {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+
+      span {
+        font-size: 11px;
+        color: #555;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
