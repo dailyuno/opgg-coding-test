@@ -2,12 +2,12 @@
   <div>
     <h2>Summoner Page</h2>
     <p>{{ summoner.name }}</p>
-    <game-item-list :games="games"></game-item-list>
+    <game-item-list :games="matches"></game-item-list>
   </div>
 </template>
 
 <script>
-import { getSummoner, getMatches } from "~/api/opgg/index";
+import { mapGetters } from "vuex";
 import GameItemList from "../../components/match/GameItemList.vue";
 
 export default {
@@ -15,21 +15,17 @@ export default {
     GameItemList,
   },
   data() {
-    return {
-      name: "",
-      summoner: "",
-    };
+    return {};
   },
-  async asyncData({ params }) {
+  computed: {
+    ...mapGetters("summoner", ["summoner"]),
+    ...mapGetters("matches", ["matches"]),
+  },
+  async fetch({ store, params }) {
     try {
       const { name } = params;
-      const {
-        data: { summoner },
-      } = await getSummoner(name);
-      const {
-        data: { games },
-      } = await getMatches(name);
-      return { summoner, games };
+      await store.dispatch("summoner/getSummoner", name);
+      await store.dispatch("matches/getMatches", name);
     } catch (e) {
       console.log(e);
     }
