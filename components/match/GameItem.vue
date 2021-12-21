@@ -10,14 +10,7 @@
       <div class="match-game-item__result-time">
         {{ getDateFromNow }}
       </div>
-      <div
-        class="match-game-item__result-info"
-        :class="
-          game.isWin
-            ? 'match-game-item__result-info--win'
-            : 'match-game-item__result-info--lose'
-        "
-      >
+      <div class="match-game-item__result-info">
         {{ game.isWin ? "승리" : "패배" }}
       </div>
       <div class="match-game-item__result-duration">
@@ -134,6 +127,7 @@ export default {
 
 <style lang="scss">
 .match-game-item {
+  $self: &;
   display: flex;
   margin-bottom: 8px;
   height: 96px;
@@ -141,11 +135,23 @@ export default {
   &--win {
     background-color: #a3cfec;
     border-color: #99b9cf;
+
+    #{ $self }__result {
+      &-info {
+        color: #1a78ae;
+      }
+    }
   }
 
   &--lose {
     background-color: #e2b6b3;
     border-color: #cea7a7;
+
+    #{ $self }__result {
+      &-info {
+        color: #c6443e;
+      }
+    }
   }
 
   &__result {
@@ -173,14 +179,6 @@ export default {
 
     &-info {
       font-weight: bold;
-
-      &--win {
-        color: #1a78ae;
-      }
-
-      &--lose {
-        color: #c6443e;
-      }
     }
   }
 
