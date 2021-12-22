@@ -1,27 +1,28 @@
 <template>
   <div
-    class="match-game-item"
-    :class="game.isWin ? 'match-game-item--win' : 'match-game-item--lose'"
+    class="match-game"
+    :class="game.isWin ? 'match-game--win' : 'match-game--lose'"
   >
-    <div class="match-game-item__result">
-      <div class="match-game-item__result-type">
+    <div class="match-game__info">
+      <div class="match-game__type">
         {{ game.gameType }}
       </div>
-      <div class="match-game-item__result-time">
+      <div class="match-game__time">
         {{ getDateFromNow }}
       </div>
-      <div class="match-game-item__result-info">
+      <div class="match-game__result">
         {{ game.isWin ? "승리" : "패배" }}
       </div>
-      <div class="match-game-item__result-duration">
+      <div class="match-game__duration">
         {{ duration }}
       </div>
     </div>
-    <div class="match-game-item__setting">
-      <div class="champion">
+
+    <div class="match-game__setting">
+      <div class="match-game__champion">
         <img :src="game.champion.imageUrl" alt="" />
       </div>
-      <div class="spells">
+      <div class="match-game__spells">
         <img
           v-for="spell in game.spells"
           :key="spell.imageUrl"
@@ -29,63 +30,75 @@
           alt=""
         />
       </div>
-      <div class="runes">
+      <div class="match-game__runes">
         <img v-for="peak in game.peak" :key="peak" :src="peak" alt="" />
       </div>
     </div>
-    <div class="game-stats-kda">
-      <div class="stats-kda">
-        <span class="stats-kda-kill">{{ game.stats.general.kill }}</span>
+
+    <div class="match-game__stats">
+      <div class="match-game__kda">
+        <span class="match-game__kill">
+          {{ game.stats.general.kill }}
+        </span>
         /
-        <span class="stats-kda-death">{{ game.stats.general.death }}</span>
+        <span class="match-game__death">
+          {{ game.stats.general.death }}
+        </span>
         /
-        <span class="stats-kda-assist">{{ game.stats.general.assist }}</span>
+        <span class="match-game__assist">
+          {{ game.stats.general.assist }}
+        </span>
       </div>
-      <div class="stats-kda-ratio">
+      <div class="match-game__ratio">
         <span>{{ game.stats.general.kdaString }}</span>
         평점
       </div>
-      <div class="stats-badges">
+      <div class="match-game__badges">
         <div
-          class="stats-badge stats-multikill"
+          class="match-game__multikill"
           v-if="game.stats.general.largestMultiKillString"
         >
           {{ game.stats.general.largestMultiKillString }}
         </div>
         <div
-          class="stats-badge stats-opscore"
-          :class="game.stats.general.opScoreBadge.toLowerCase()"
+          class="match-game__opscore"
+          :class="
+            'match-game__opscore--' +
+            game.stats.general.opScoreBadge.toLowerCase()
+          "
           v-if="game.stats.general.opScoreBadge"
         >
           {{ game.stats.general.opScoreBadge }}
         </div>
       </div>
     </div>
-    <div class="game-stats-detail">
-      <div class="game-level">레벨 {{ game.champion.level }}</div>
-      <div class="game-cs">
+
+    <div class="match-game__detail">
+      <div class="match-game__level">레벨 {{ game.champion.level }}</div>
+      <div class="match-game__css">
         {{ game.stats.general.cs }} ({{ game.stats.general.csPerMin }}) CS
       </div>
-      <div class="game-kill-rate">
+      <div class="match-game__rate">
         킬관여 {{ game.stats.general.contributionForKillRate }}
       </div>
-      <!-- <div class="game-mmr">
-        <div>매치 평균</div>
-        <div class="game-tier">{{ game.mmr }}</div>
-      </div> -->
     </div>
-    <div class="game-stats-items">
-      <div class="game-stats-items__container">
-        <div class="game-stats-item" v-for="i in 7" :key="i">
+
+    <div class="match-game__content">
+      <div class="match-game__items">
+        <div
+          class="match-game__item"
+          v-for="i in 7"
+          :key="i"
+          :class="i >= game.items.length ? 'match-game__item--empty' : ''"
+        >
           <img
             v-if="i < game.items.length"
             :src="game.items[i].imageUrl"
             alt=""
           />
-          <div v-else class="game-stats-no-item"></div>
         </div>
       </div>
-      <div class="game-stats-ward">
+      <div class="match-game__ward">
         <img
           v-if="game.isWin"
           src="https://opgg-static.akamaized.net/images/site/summoner/icon-ward-blue.png"
@@ -99,19 +112,16 @@
         제어 와드 {{ game.stats.ward.visionWardsBought }}
       </div>
     </div>
-    <div class="match-game-item__teams">
-      <div
-        class="match-game-item__team"
-        v-for="team in teams"
-        :key="team.teamId"
-      >
+
+    <div class="match-game__teams">
+      <div class="match-game__team" v-for="team in teams" :key="team.teamId">
         <div
-          class="match-game-item__team-player"
+          class="match-game__player"
           v-for="(player, index) in team.players"
           :key="index"
         >
           <img :src="player.champion.imageUrl" alt="" />
-          <span>
+          <span class="match-game__name">
             {{ player.summonerName }}
           </span>
         </div>
@@ -162,7 +172,7 @@ export default {
 </script>
 
 <style lang="scss">
-.match-game-item {
+.match-game {
   $self: &;
   display: flex;
   margin-bottom: 8px;
@@ -173,9 +183,7 @@ export default {
     border-color: #99b9cf;
 
     #{ $self }__result {
-      &-info {
-        color: #1a78ae;
-      }
+      color: #1a78ae;
     }
   }
 
@@ -184,13 +192,11 @@ export default {
     border-color: #cea7a7;
 
     #{ $self }__result {
-      &-info {
-        color: #c6443e;
-      }
+      color: #c6443e;
     }
   }
 
-  &__result {
+  &__info {
     width: 80px;
     display: flex;
     flex-wrap: wrap;
@@ -199,23 +205,23 @@ export default {
     justify-content: center;
     font-size: 11px;
     color: #555;
+  }
 
-    &-type {
-      font-weight: bold;
-    }
+  &__type {
+    font-weight: bold;
+  }
 
-    &-type,
-    &-time {
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: center;
-    }
+  &__type,
+  &__time {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
 
-    &-info {
-      font-weight: bold;
-    }
+  &__result {
+    font-weight: bold;
   }
 
   &__setting {
@@ -223,29 +229,113 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
 
-    .champion {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      overflow: hidden;
+  &__champion {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
 
-      img {
-        width: 100%;
-        height: 100%;
-      }
+    img {
+      width: 100%;
+      height: 100%;
     }
+  }
 
-    .spells,
-    .runes {
-      display: flex;
-      flex-direction: column;
+  &__spells,
+  &__runes {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4px;
+
+    img {
+      width: 22px;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+  }
+
+  &__kda {
+    font-size: 15px;
+    color: #879292;
+  }
+
+  &__kill,
+  &__assist,
+  &__death {
+    font-weight: bold;
+  }
+
+  &__kill,
+  &__assist {
+    color: #555e5e;
+  }
+
+  &__death {
+    color: #c6443e;
+  }
+
+  &__ratio {
+    font-size: 12px;
+    font-weight: bold;
+    color: #353a3a;
+  }
+
+  &__badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__multikill,
+  &__opscore {
+    color: #f2f2f2;
+    border-radius: 15px;
+    padding: 2px 5px;
+    font-size: 10px;
+    margin-top: 8px;
+
+    &:nth-child(n + 2) {
       margin-left: 4px;
-
-      img {
-        width: 22px;
-      }
     }
+  }
+
+  &__multikill {
+    background: #ee5a52;
+    border: 1px solid #c6443e;
+  }
+
+  &__opscore {
+    &--mvp {
+      background-color: #e19205;
+      border: 1px solid #b88a2a;
+    }
+
+    &--ace {
+      background-color: #8c51c5;
+      border: solid 1px #7f3590;
+    }
+  }
+
+  &__detail {
+    width: 90px;
+    font-size: 11px;
+    color: #555e5e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__rate {
+    color: #c6443e;
   }
 
   &__teams {
@@ -257,141 +347,64 @@ export default {
     display: flex;
     justify-content: center;
     flex-direction: column;
-
-    &-player {
-      display: flex;
-      align-items: center;
-
-      img {
-        width: 16px;
-        height: 16px;
-      }
-
-      span {
-        font-size: 11px;
-        color: #555;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    }
-  }
-}
-
-.game-stats-kda {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-
-  .stats-kda {
-    font-size: 15px;
-    color: #879292;
-
-    span {
-      font-weight: bold;
-    }
-
-    .stats-kda-kill,
-    .stats-kda-assist {
-      color: #555e5e;
-    }
-
-    .stats-kda-death {
-      color: #c6443e;
-    }
   }
 
-  .stats-kda-ratio {
-    font-size: 12px;
-    font-weight: bold;
-    color: #353a3a;
-  }
-
-  .stats-badges {
+  &__player {
     display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 2px;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__name {
+    font-size: 11px;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 2px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
-
-    .stats-badge {
-      color: #f2f2f2;
-      border-radius: 15px;
-      padding: 2px 5px;
-      font-size: 10px;
-      margin-top: 8px;
-
-      &:nth-child(n + 2) {
-        margin-left: 4px;
-      }
-    }
-
-    .stats-multikill {
-      background: #ee5a52;
-      border: 1px solid #c6443e;
-    }
-
-    .stats-opscore {
-      &.mvp {
-        background-color: #e19205;
-        border: 1px solid #b88a2a;
-      }
-
-      &.ace {
-        background-color: #8c51c5;
-        border: solid 1px #7f3590;
-      }
-    }
+    padding: 0 10px;
   }
-}
 
-.game-stats-detail {
-  width: 90px;
-  font-size: 11px;
-  color: #555e5e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  .game-kill-rate {
-    color: #c6443e;
-  }
-}
-
-.game-stats-items {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-
-  &__container {
+  &__items {
     width: 96px;
     display: flex;
     flex-wrap: wrap;
+  }
 
-    .game-stats-item {
-      width: 22px;
-      height: 22px;
-      border-radius: 3px;
-      margin-top: 2px;
-      margin-right: 2px;
-      overflow: hidden;
+  &__item {
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
+    margin-top: 2px;
+    margin-right: 2px;
+    overflow: hidden;
 
-      img {
-        width: 100%;
-        height: 100%;
-      }
+    &--empty {
+      background-image: url("https://opgg-static.akamaized.net/images/pattern/opacity.1.png");
+    }
 
-      .game-stats-no-item {
-        width: 100%;
-        height: 100%;
-        background-image: url("https://opgg-static.akamaized.net/images/pattern/opacity.1.png");
-      }
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 
-  .game-stats-ward {
+  &__ward {
     display: flex;
     align-items: center;
     margin-top: 7px;
