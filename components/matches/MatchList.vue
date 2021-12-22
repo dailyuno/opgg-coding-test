@@ -26,4 +26,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.match-item-list {
+  width: 100%;
+}
+</style>

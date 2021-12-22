@@ -1,18 +1,24 @@
 <template>
-  <div>
-    <h2>Summoner Page</h2>
-    <p>{{ summoner.name }}</p>
-    <match-list :matches="matches"></match-list>
+  <div class="app-layouts">
+    <div class="app-layouts__content">
+      <aside class="app-aside">
+        <summoner-rank :league="summoner.leagues[0]"></summoner-rank>
+        <summoner-rank :league="summoner.leagues[1]"></summoner-rank>
+      </aside>
+      <match-list :matches="matches"></match-list>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import MatchList from "../../components/matches/MatchList.vue";
+import MatchList from "~/components/matches/MatchList";
+import SummonerRank from "~/components/summoner/SummonerRank";
 
 export default {
   components: {
     MatchList,
+    SummonerRank,
   },
   data() {
     return {};
@@ -33,4 +39,21 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.app-layouts {
+  display: flex;
+  justify-content: center;
+  background: #eaeaea;
+  padding-top: 10px;
+
+  &__content {
+    display: flex;
+    width: 1000px;
+  }
+}
+
+.app-aside {
+  flex: 1 0 310px;
+  padding-right: 10px;
+}
+</style>
