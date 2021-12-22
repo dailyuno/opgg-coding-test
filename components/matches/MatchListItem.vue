@@ -1,106 +1,106 @@
 <template>
   <div
-    class="match-game"
-    :class="game.isWin ? 'match-game--win' : 'match-game--lose'"
+    class="match-item"
+    :class="match.isWin ? 'match-item--win' : 'match-item--lose'"
   >
-    <div class="match-game__info">
-      <div class="match-game__type">
-        {{ game.gameType }}
+    <div class="match-item__info">
+      <div class="match-item__type">
+        {{ match.gameType }}
       </div>
-      <div class="match-game__time">
+      <div class="match-item__time">
         {{ getDateFromNow }}
       </div>
-      <div class="match-game__result">
-        {{ game.isWin ? "승리" : "패배" }}
+      <div class="match-item__result">
+        {{ match.isWin ? "승리" : "패배" }}
       </div>
-      <div class="match-game__duration">
+      <div class="match-item__duration">
         {{ duration }}
       </div>
     </div>
 
-    <div class="match-game__setting">
-      <div class="match-game__champion">
-        <img :src="game.champion.imageUrl" alt="" />
+    <div class="match-item__setting">
+      <div class="match-item__champion">
+        <img :src="match.champion.imageUrl" alt="" />
       </div>
-      <div class="match-game__spells">
+      <div class="match-item__spells">
         <img
-          v-for="spell in game.spells"
+          v-for="spell in match.spells"
           :key="spell.imageUrl"
           :src="spell.imageUrl"
           alt=""
         />
       </div>
-      <div class="match-game__runes">
-        <img v-for="peak in game.peak" :key="peak" :src="peak" alt="" />
+      <div class="match-item__runes">
+        <img v-for="peak in match.peak" :key="peak" :src="peak" alt="" />
       </div>
     </div>
 
-    <div class="match-game__stats">
-      <div class="match-game__kda">
-        <span class="match-game__kill">
-          {{ game.stats.general.kill }}
+    <div class="match-item__stats">
+      <div class="match-item__kda">
+        <span class="match-item__kill">
+          {{ match.stats.general.kill }}
         </span>
         /
-        <span class="match-game__death">
-          {{ game.stats.general.death }}
+        <span class="match-item__death">
+          {{ match.stats.general.death }}
         </span>
         /
-        <span class="match-game__assist">
-          {{ game.stats.general.assist }}
+        <span class="match-item__assist">
+          {{ match.stats.general.assist }}
         </span>
       </div>
-      <div class="match-game__ratio">
-        <span>{{ game.stats.general.kdaString }}</span>
+      <div class="match-item__ratio">
+        <span>{{ match.stats.general.kdaString }}</span>
         평점
       </div>
-      <div class="match-game__badges">
+      <div class="match-item__badges">
         <div
-          class="match-game__multikill"
-          v-if="game.stats.general.largestMultiKillString"
+          class="match-item__multikill"
+          v-if="match.stats.general.largestMultiKillString"
         >
-          {{ game.stats.general.largestMultiKillString }}
+          {{ match.stats.general.largestMultiKillString }}
         </div>
         <div
-          class="match-game__opscore"
+          class="match-item__opscore"
           :class="
-            'match-game__opscore--' +
-            game.stats.general.opScoreBadge.toLowerCase()
+            'match-item__opscore--' +
+            match.stats.general.opScoreBadge.toLowerCase()
           "
-          v-if="game.stats.general.opScoreBadge"
+          v-if="match.stats.general.opScoreBadge"
         >
-          {{ game.stats.general.opScoreBadge }}
+          {{ match.stats.general.opScoreBadge }}
         </div>
       </div>
     </div>
 
-    <div class="match-game__detail">
-      <div class="match-game__level">레벨 {{ game.champion.level }}</div>
-      <div class="match-game__css">
-        {{ game.stats.general.cs }} ({{ game.stats.general.csPerMin }}) CS
+    <div class="match-item__detail">
+      <div class="match-item__level">레벨 {{ match.champion.level }}</div>
+      <div class="match-item__css">
+        {{ match.stats.general.cs }} ({{ match.stats.general.csPerMin }}) CS
       </div>
-      <div class="match-game__rate">
-        킬관여 {{ game.stats.general.contributionForKillRate }}
+      <div class="match-item__rate">
+        킬관여 {{ match.stats.general.contributionForKillRate }}
       </div>
     </div>
 
-    <div class="match-game__content">
-      <div class="match-game__items">
+    <div class="match-item__content">
+      <div class="match-item__items">
         <div
-          class="match-game__item"
+          class="match-item__item"
           v-for="i in 7"
           :key="i"
-          :class="i >= game.items.length ? 'match-game__item--empty' : ''"
+          :class="i >= match.items.length ? 'match-item__item--empty' : ''"
         >
           <img
-            v-if="i < game.items.length"
-            :src="game.items[i].imageUrl"
+            v-if="i < match.items.length"
+            :src="match.items[i].imageUrl"
             alt=""
           />
         </div>
       </div>
-      <div class="match-game__ward">
+      <div class="match-item__ward">
         <img
-          v-if="game.isWin"
+          v-if="match.isWin"
           src="https://opgg-static.akamaized.net/images/site/summoner/icon-ward-blue.png"
           alt=""
         />
@@ -109,19 +109,19 @@
           src="https://opgg-static.akamaized.net/images/site/summoner/icon-ward-red.png"
           alt=""
         />
-        제어 와드 {{ game.stats.ward.visionWardsBought }}
+        제어 와드 {{ match.stats.ward.visionWardsBought }}
       </div>
     </div>
 
-    <div class="match-game__teams">
-      <div class="match-game__team" v-for="team in teams" :key="team.teamId">
+    <div class="match-item__teams">
+      <div class="match-item__team" v-for="team in teams" :key="team.teamId">
         <div
-          class="match-game__player"
+          class="match-item__player"
           v-for="(player, index) in team.players"
           :key="index"
         >
           <img :src="player.champion.imageUrl" alt="" />
-          <span class="match-game__name">
+          <span class="match-item__name">
             {{ player.summonerName }}
           </span>
         </div>
@@ -137,7 +137,7 @@ import { getMatchDetail } from "~/api/opgg";
 
 export default {
   props: {
-    game: {
+    match: {
       type: Object,
     },
   },
@@ -149,11 +149,11 @@ export default {
   computed: {
     ...mapGetters("summoner", ["summoner"]),
     getDateFromNow() {
-      return moment(this.game.createDate, "X").fromNow();
+      return moment(this.match.createDate, "X").fromNow();
     },
     duration() {
       return moment
-        .utc(this.game.gameLength * 1000)
+        .utc(this.match.gameLength * 1000)
         .format("mm분ss초")
         .replace(/^0/, "");
     },
@@ -172,7 +172,7 @@ export default {
 </script>
 
 <style lang="scss">
-.match-game {
+.match-item {
   $self: &;
   display: flex;
   margin-bottom: 8px;

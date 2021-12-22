@@ -2,17 +2,17 @@
   <div>
     <h2>Summoner Page</h2>
     <p>{{ summoner.name }}</p>
-    <game-item-list :games="matches"></game-item-list>
+    <match-list :matches="matches"></match-list>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import GameItemList from "../../components/match/GameItemList.vue";
+import MatchList from "../../components/matches/MatchList.vue";
 
 export default {
   components: {
-    GameItemList,
+    MatchList,
   },
   data() {
     return {};
