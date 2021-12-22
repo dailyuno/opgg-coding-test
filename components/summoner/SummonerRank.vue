@@ -1,5 +1,5 @@
 <template>
-  <div class="summoner-rank">
+  <div class="summoner-rank" :class="small ? 'summoner-rank--small' : ''">
     <div class="summoner-rank__img">
       <img :src="league.tierRank.imageUrl" alt="" />
     </div>
@@ -27,6 +27,10 @@ export default {
     league: {
       type: Object,
     },
+    small: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     winRatio() {
@@ -43,6 +47,7 @@ export default {
 
 <style lang="scss">
 .summoner-rank {
+  $self: &;
   width: 100%;
   color: #879292;
   background: #f2f2f2;
@@ -53,12 +58,29 @@ export default {
   display: flex;
   line-height: 1.5;
 
+  &--small {
+    margin-top: 8px;
+
+    #{$self}__img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+  }
+
   &__img {
+    width: 104px;
+    height: 104px;
     padding: 0 8px;
 
     img {
-      width: 104px;
-      height: 104px;
+      width: 100%;
+      height: 100%;
     }
   }
 

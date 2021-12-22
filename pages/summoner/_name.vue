@@ -3,7 +3,10 @@
     <div class="app-layouts__content">
       <aside class="app-aside">
         <summoner-rank :league="summoner.leagues[0]"></summoner-rank>
-        <summoner-rank :league="summoner.leagues[1]"></summoner-rank>
+        <summoner-rank
+          :league="summoner.leagues[1]"
+          :small="true"
+        ></summoner-rank>
       </aside>
       <match-list :matches="matches"></match-list>
     </div>
