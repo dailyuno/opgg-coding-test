@@ -39,9 +39,7 @@ export default {
       return winRatio.toFixed(0);
     },
   },
-  created() {
-    console.log(this.league);
-  },
+  created() {},
 };
 </script>
 
@@ -77,6 +75,7 @@ export default {
     width: 104px;
     height: 104px;
     padding: 0 8px;
+    box-sizing: content-box;
 
     img {
       width: 100%;

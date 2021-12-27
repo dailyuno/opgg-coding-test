@@ -20,9 +20,6 @@ export default {
   components: {
     MatchListItem,
   },
-  created() {
-    console.log(this.matches);
-  },
 };
 </script>
 
