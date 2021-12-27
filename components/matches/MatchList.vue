@@ -1,9 +1,9 @@
 <template>
   <div class="match-item-list">
     <match-list-item
-      v-for="match in matches"
-      :key="match.gameId"
-      :match="match"
+      v-for="game in games"
+      :key="game.gameId"
+      :game="game"
     ></match-list-item>
   </div>
 </template>
@@ -13,7 +13,7 @@ import MatchListItem from "~/components/matches/MatchListItem";
 
 export default {
   props: {
-    matches: {
+    games: {
       type: Array,
     },
   },

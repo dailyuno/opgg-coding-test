@@ -1,17 +1,17 @@
 <template>
   <div
     class="match-item"
-    :class="match.isWin ? 'match-item--win' : 'match-item--lose'"
+    :class="game.isWin ? 'match-item--win' : 'match-item--lose'"
   >
     <div class="match-item__info">
       <div class="match-item__type">
-        {{ match.gameType }}
+        {{ game.gameType }}
       </div>
       <div class="match-item__time">
         {{ getDateFromNow }}
       </div>
       <div class="match-item__result">
-        {{ match.isWin ? "승리" : "패배" }}
+        {{ game.isWin ? "승리" : "패배" }}
       </div>
       <div class="match-item__duration">
         {{ duration }}
@@ -20,66 +20,66 @@
 
     <div class="match-item__setting">
       <div class="match-item__champion">
-        <img :src="match.champion.imageUrl" alt="" />
+        <img :src="game.champion.imageUrl" alt="" />
       </div>
       <div class="match-item__spells">
         <img
-          v-for="spell in match.spells"
+          v-for="spell in game.spells"
           :key="spell.imageUrl"
           :src="spell.imageUrl"
           alt=""
         />
       </div>
       <div class="match-item__runes">
-        <img v-for="peak in match.peak" :key="peak" :src="peak" alt="" />
+        <img v-for="peak in game.peak" :key="peak" :src="peak" alt="" />
       </div>
     </div>
 
     <div class="match-item__stats">
       <div class="match-item__kda">
         <span class="match-item__kill">
-          {{ match.stats.general.kill }}
+          {{ game.stats.general.kill }}
         </span>
         /
         <span class="match-item__death">
-          {{ match.stats.general.death }}
+          {{ game.stats.general.death }}
         </span>
         /
         <span class="match-item__assist">
-          {{ match.stats.general.assist }}
+          {{ game.stats.general.assist }}
         </span>
       </div>
       <div class="match-item__ratio">
-        <span>{{ match.stats.general.kdaString }}</span>
+        <span>{{ game.stats.general.kdaString }}</span>
         평점
       </div>
       <div class="match-item__badges">
         <div
           class="match-item__multikill"
-          v-if="match.stats.general.largestMultiKillString"
+          v-if="game.stats.general.largestMultiKillString"
         >
-          {{ match.stats.general.largestMultiKillString }}
+          {{ game.stats.general.largestMultiKillString }}
         </div>
         <div
           class="match-item__opscore"
           :class="
             'match-item__opscore--' +
-            match.stats.general.opScoreBadge.toLowerCase()
+            game.stats.general.opScoreBadge.toLowerCase()
           "
-          v-if="match.stats.general.opScoreBadge"
+          v-if="game.stats.general.opScoreBadge"
         >
-          {{ match.stats.general.opScoreBadge }}
+          {{ game.stats.general.opScoreBadge }}
         </div>
       </div>
     </div>
 
     <div class="match-item__detail">
-      <div class="match-item__level">레벨 {{ match.champion.level }}</div>
+      <div class="match-item__level">레벨 {{ game.champion.level }}</div>
       <div class="match-item__css">
-        {{ match.stats.general.cs }} ({{ match.stats.general.csPerMin }}) CS
+        {{ game.stats.general.cs }} ({{ game.stats.general.csPerMin }}) CS
       </div>
       <div class="match-item__rate">
-        킬관여 {{ match.stats.general.contributionForKillRate }}
+        킬관여 {{ game.stats.general.contributionForKillRate }}
       </div>
     </div>
 
@@ -89,18 +89,18 @@
           class="match-item__item"
           v-for="i in 7"
           :key="i"
-          :class="i >= match.items.length ? 'match-item__item--empty' : ''"
+          :class="i >= game.items.length ? 'match-item__item--empty' : ''"
         >
           <img
-            v-if="i < match.items.length"
-            :src="match.items[i].imageUrl"
+            v-if="i < game.items.length"
+            :src="game.items[i].imageUrl"
             alt=""
           />
         </div>
       </div>
       <div class="match-item__ward">
         <img
-          v-if="match.isWin"
+          v-if="game.isWin"
           src="https://opgg-static.akamaized.net/images/site/summoner/icon-ward-blue.png"
           alt=""
         />
@@ -109,7 +109,7 @@
           src="https://opgg-static.akamaized.net/images/site/summoner/icon-ward-red.png"
           alt=""
         />
-        제어 와드 {{ match.stats.ward.visionWardsBought }}
+        제어 와드 {{ game.stats.ward.visionWardsBought }}
       </div>
     </div>
 
@@ -137,7 +137,7 @@ import { getMatchDetail } from "~/api/opgg";
 
 export default {
   props: {
-    match: {
+    game: {
       type: Object,
     },
   },
@@ -149,11 +149,11 @@ export default {
   computed: {
     ...mapGetters("summoner", ["summoner"]),
     getDateFromNow() {
-      return moment(this.match.createDate, "X").fromNow();
+      return moment(this.game.createDate, "X").fromNow();
     },
     duration() {
       return moment
-        .utc(this.match.gameLength * 1000)
+        .utc(this.game.gameLength * 1000)
         .format("mm분ss초")
         .replace(/^0/, "");
     },
