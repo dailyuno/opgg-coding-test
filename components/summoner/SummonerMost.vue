@@ -19,17 +19,25 @@
           :champion="champion"
         />
       </v-tab-item>
-      <v-tab-item :transition="false">Test2</v-tab-item>
+      <v-tab-item :transition="false">
+        <summoner-recent-champion
+          v-for="(champion, index) in mostInfo.recentWinRate"
+          :key="index"
+          :champion="champion"
+        />
+      </v-tab-item>
     </v-tabs-items>
   </div>
 </template>
 
 <script>
 import SummonerMostChampion from "./SummonerMostChampion";
+import SummonerRecentChampion from "./SummonerRecentChampion";
 
 export default {
   components: {
     SummonerMostChampion,
+    SummonerRecentChampion,
   },
   props: {
     mostInfo: {
@@ -38,7 +46,7 @@ export default {
   },
   data() {
     return {
-      tab: null,
+      tab: 0,
     };
   },
 };

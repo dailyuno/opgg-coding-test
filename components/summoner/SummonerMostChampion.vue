@@ -4,7 +4,7 @@
       <img
         :src="champion.imageUrl"
         :alt="champion.name"
-        class="summoner-most-champion__profile-img"
+        class="summoner-most-champion__img"
       />
     </div>
     <div class="summoner-most-champion__info">
@@ -76,18 +76,18 @@ export default {
     height: 45px;
     padding: 4px 0;
     box-sizing: content-box;
+  }
 
-    &-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-    }
+  &__img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
   }
 
   &__info {
     display: flex;
     flex-direction: column;
-    width: 80px;
+    width: 90px;
     padding-left: 10px;
   }
 
@@ -106,6 +106,7 @@ export default {
   }
 
   &__stats {
+    flex: 1 0 auto;
   }
 
   &__kda-ratio {
@@ -114,8 +115,13 @@ export default {
   }
 
   &__kda {
+    font-size: 11px;
+  }
+
+  &__kill,
+  &__death,
+  &__assist {
     font-size: 12px;
-    display: flex;
   }
 
   &__games {
