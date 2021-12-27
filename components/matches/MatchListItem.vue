@@ -396,6 +396,7 @@ export default {
 
     &--empty {
       background-image: url("https://opgg-static.akamaized.net/images/pattern/opacity.1.png");
+      background-repeat: repeat;
     }
 
     img {
