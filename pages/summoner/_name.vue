@@ -9,7 +9,6 @@
 
       <section class="app-content">
         <match-overview></match-overview>
-        <match-list :games="games"></match-list>
       </section>
     </div>
   </div>
@@ -17,14 +16,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-import MatchList from "~/components/matches/MatchList";
 import SummonerRank from "~/components/summoner/SummonerRank";
 import SummonerMost from "~/components/summoner/SummonerMost";
 import MatchOverview from "~/components/matches/MatchOverview";
 
 export default {
   components: {
-    MatchList,
     SummonerRank,
     SummonerMost,
     MatchOverview,
@@ -34,7 +31,6 @@ export default {
   },
   computed: {
     ...mapGetters("summoner", ["summoner", "mostInfo"]),
-    ...mapGetters("matches", ["games"]),
   },
   async fetch({ store, params }) {
     try {
@@ -69,5 +65,9 @@ export default {
   .summoner-most {
     margin-top: 8px;
   }
+}
+
+.app-content {
+  flex: 1 0 auto;
 }
 </style>
