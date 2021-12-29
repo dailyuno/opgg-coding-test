@@ -1,18 +1,18 @@
 <template>
-  <div class="summoner-profile">
-    <div class="summoner-profile__img">
+  <div class="summoner-profile-img">
+    <div class="summoner-profile-img__container">
       <img
         :src="summoner.profileImageUrl"
         alt=""
-        class="summoner-profile__icon"
+        class="summoner-profile-img__icon"
       />
       <img
         :src="summoner.profileBorderImageUrl"
         alt=""
-        class="summoner-profile__border"
+        class="summoner-profile-img__border"
       />
     </div>
-    <div class="summoner-profile__level">
+    <div class="summoner-profile-img__level">
       {{ summoner.level }}
     </div>
   </div>
@@ -29,10 +29,10 @@ export default {
 </script>
 
 <style lang="scss">
-.summoner-profile {
+.summoner-profile-img {
   position: relative;
 
-  &__img {
+  &__container {
     width: 120px;
     height: 120px;
     position: relative;
