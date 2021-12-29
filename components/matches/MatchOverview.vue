@@ -38,7 +38,7 @@ export default {
   },
   props: {
     matches: {
-      type: Array,
+      type: Object,
     },
   },
   data() {
