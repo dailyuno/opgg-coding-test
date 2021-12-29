@@ -52,6 +52,7 @@ export default {
         chart: {
           type: "pie",
           backgroundColor: "transparent",
+          width: 90,
           height: 90,
           marginTop: 15,
         },
