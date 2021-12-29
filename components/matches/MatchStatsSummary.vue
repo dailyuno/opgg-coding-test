@@ -4,8 +4,11 @@
       {{ games.length }}전 {{ wins }}승 {{ losses }}패
     </div>
     <div class="match-stats-summary__content">
-      <div class="match-stats-summary__graph">
-        {{ calcWinRatio({ wins, losses }) }}%
+      <div class="match-stats-summary__graph-container">
+        <highchart :options="chartOptions" class="match-stats-summary__graph" />
+        <div class="match-stats-summary__win-rate">
+          {{ calcWinRatio({ wins, losses }) }}%
+        </div>
       </div>
       <div class="match-stats-summary__detail">
         <div class="match-stats-summary__kda">
@@ -42,6 +45,45 @@ export default {
     games: {
       type: Array,
     },
+  },
+  data() {
+    return {
+      chartOptions: {
+        chart: {
+          type: "pie",
+          backgroundColor: "transparent",
+          height: 90,
+          marginTop: 15,
+        },
+        title: {
+          text: "",
+        },
+        series: [
+          {
+            data: [],
+            enableMouseTracking: false,
+          },
+        ],
+        colors: ["#ee5a52", "#1f8ecd"],
+        plotOptions: {
+          pie: {
+            dataLabels: {
+              enabled: false,
+            },
+            size: 90,
+            shadow: false,
+            innerSize: "70%",
+          },
+        },
+        credits: {
+          enabled: false,
+        },
+        tooltip: {
+          enabled: false,
+          anmation: false,
+        },
+      },
+    };
   },
   methods: {
     calcWinRatio,
@@ -96,17 +138,26 @@ export default {
       );
     },
   },
+  watch: {
+    games: {
+      immediate: true,
+      handler() {
+        this.chartOptions.series[0].data = [this.losses, this.wins];
+      },
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .match-stats-summary {
-  width: 240px;
+  width: 270px;
   padding: 16px 0 24px 14px;
 
   &__title {
     font-size: 12px;
     color: #666;
+    padding-bottom: 12px;
   }
 
   &__content {
@@ -114,14 +165,29 @@ export default {
     align-items: center;
   }
 
-  &__graph {
+  &__graph-container {
     width: 90px;
     height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__graph {
+    position: absolute;
+  }
+
+  &__win-rate {
+    font-size: 14px;
+    color: #555;
   }
 
   &__detail {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   &__kda {
