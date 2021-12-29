@@ -62,7 +62,7 @@ export default {
   &__tab {
     text-transform: capitalize;
     text-align: center;
-    width: 150px;
+    width: 50%;
     border-bottom: 1px solid #cdd2d2;
 
     &:not(:last-child) {

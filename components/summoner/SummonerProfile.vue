@@ -27,7 +27,8 @@ export default {
   display: flex;
 
   &__info {
-    padding-left: 20px;
+    padding-top: 8px;
+    padding-left: 15px;
   }
 }
 </style>
