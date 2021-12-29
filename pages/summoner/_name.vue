@@ -1,7 +1,7 @@
 <template>
   <div class="app-layouts">
     <div class="app-layouts__container">
-      <div class="summoner">
+      <div class="summoner" v-if="loading">
         <div class="summoner__header">
           <summoner-overview :summoner="summoner"></summoner-overview>
         </div>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import SummonerRank from "~/components/summoner/SummonerRank";
 import SummonerMost from "~/components/summoner/SummonerMost";
 import MatchOverview from "~/components/matches/MatchOverview";
@@ -36,21 +36,33 @@ export default {
     SummonerOverview,
   },
   data() {
-    return {};
+    return {
+      loading: false,
+    };
   },
   computed: {
     ...mapGetters("summoner", ["summoner", "mostInfo"]),
     ...mapGetters("matches", ["matches"]),
   },
-  async fetch({ store, params }) {
-    try {
-      const { name } = params;
-      await store.dispatch("summoner/getSummoner", name);
-      await store.dispatch("summoner/getMostInfo", name);
-      await store.dispatch("matches/getMatches", name);
-    } catch (e) {
-      console.log(e);
-    }
+  watch: {
+    "$route.params.name": {
+      immediate: true,
+      async handler() {
+        try {
+          const name = encodeURI(this.$route.params.name);
+          await this.getSummoner(name);
+          await this.getMostInfo(name);
+          await this.getMatches(name);
+          this.loading = true;
+        } catch (e) {
+          console.log(e);
+        }
+      },
+    },
+  },
+  methods: {
+    ...mapActions("summoner", ["getSummoner", "getMostInfo"]),
+    ...mapActions("matches", ["getMatches"]),
   },
 };
 </script>
