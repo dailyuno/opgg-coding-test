@@ -3,7 +3,7 @@
     <summoner-profile-image :summoner="summoner"></summoner-profile-image>
     <summoner-profile-info
       :summoner="summoner"
-      class="summoner-profile__info"
+      class="summoner-profile__text"
     ></summoner-profile-info>
   </div>
 </template>
@@ -23,12 +23,5 @@ export default {
 </script>
 
 <style lang="scss">
-.summoner-profile {
-  display: flex;
-
-  &__info {
-    padding-top: 8px;
-    padding-left: 15px;
-  }
-}
+@import "~/assets/scss/summoner/profile";
 </style>

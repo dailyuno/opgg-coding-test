@@ -43,6 +43,7 @@ export default {
     color: #555e5e;
     font-size: 11px;
     display: flex;
+    margin-top: 6px;
   }
 
   &__rank {

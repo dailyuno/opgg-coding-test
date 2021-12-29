@@ -1,19 +1,34 @@
 <template>
   <div class="app-layouts">
     <div class="app-layouts__container">
-      <div class="summoner" v-if="loading">
+      <div class="summoner">
         <div class="summoner__header">
-          <summoner-overview :summoner="summoner"></summoner-overview>
+          <summoner-overview-skeleton v-if="isLoading">
+          </summoner-overview-skeleton>
+          <summoner-overview :summoner="summoner" v-else></summoner-overview>
         </div>
         <div class="summoner__content">
           <aside class="summoner__detail">
-            <summoner-rank :league="summoner.leagues[0]"></summoner-rank>
-            <summoner-rank :league="summoner.leagues[1]" small></summoner-rank>
-            <summoner-most :mostInfo="mostInfo" />
+            <template v-if="isLoading">
+              <summoner-rank-skeleton />
+              <summoner-rank-skeleton small />
+              <skeleton-loader width="300" height="265" margin="10px 0 0 0" />
+            </template>
+            <template v-else>
+              <summoner-rank :league="summoner.leagues[0]"></summoner-rank>
+              <summoner-rank
+                :league="summoner.leagues[1]"
+                small
+              ></summoner-rank>
+              <summoner-most :mostInfo="mostInfo" />
+            </template>
           </aside>
 
           <section class="summoner__matches">
-            <match-overview :matches="matches"></match-overview>
+            <match-overview
+              :matches="matches"
+              v-if="!isLoading"
+            ></match-overview>
           </section>
         </div>
       </div>
@@ -27,6 +42,8 @@ import SummonerRank from "~/components/summoner/SummonerRank";
 import SummonerMost from "~/components/summoner/SummonerMost";
 import MatchOverview from "~/components/matches/MatchOverview";
 import SummonerOverview from "~/components/summoner/SummonerOverview.vue";
+import SummonerRankSkeleton from "~/components/summoner/SummonerRankSkeleton.vue";
+import SummonerOverviewSkeleton from "~/components/summoner/SummonerOverviewSkeleton.vue";
 
 export default {
   components: {
@@ -34,10 +51,12 @@ export default {
     SummonerMost,
     MatchOverview,
     SummonerOverview,
+    SummonerRankSkeleton,
+    SummonerOverviewSkeleton,
   },
   data() {
     return {
-      loading: false,
+      isLoading: true,
     };
   },
   computed: {
@@ -49,11 +68,12 @@ export default {
       immediate: true,
       async handler() {
         try {
+          this.isLoading = true;
           const name = encodeURI(this.$route.params.name);
           await this.getSummoner(name);
           await this.getMostInfo(name);
           await this.getMatches(name);
-          this.loading = true;
+          this.isLoading = false;
         } catch (e) {
           console.log(e);
         }

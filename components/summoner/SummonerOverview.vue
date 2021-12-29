@@ -26,12 +26,5 @@ export default {
 </script>
 
 <style lang="scss">
-.summoner-overview {
-  padding-bottom: 20px;
-
-  &__badges {
-    padding-left: 16px;
-    margin-bottom: 8px;
-  }
-}
+@import "~/assets/scss/summoner/overview";
 </style>
