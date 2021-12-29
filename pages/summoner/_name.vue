@@ -8,7 +8,7 @@
       </aside>
 
       <section class="app-content">
-        <match-overview></match-overview>
+        <match-overview :matches="matches"></match-overview>
       </section>
     </div>
   </div>
@@ -31,6 +31,7 @@ export default {
   },
   computed: {
     ...mapGetters("summoner", ["summoner", "mostInfo"]),
+    ...mapGetters("matches", ["matches"]),
   },
   async fetch({ store, params }) {
     try {
@@ -59,8 +60,9 @@ export default {
 }
 
 .app-aside {
-  flex: 1 0 310px;
-  padding-right: 10px;
+  flex: 1 0 300px;
+  max-width: 300px;
+  margin-right: 10px;
 
   .summoner-most {
     margin-top: 8px;
@@ -68,6 +70,6 @@ export default {
 }
 
 .app-content {
-  flex: 1 0 auto;
+  flex: 1 0 690px;
 }
 </style>
