@@ -14,4 +14,19 @@ export default {
   summary(state) {
     return state.matches.summary;
   },
+  matchType(state) {
+    return state.matchType;
+  },
+  filterGames(state) {
+    const { matches, matchType } = state;
+    const { games } = matches;
+
+    if (matchType === "전체") {
+      return games;
+    }
+
+    return games.filter(game => {
+      return game.gameType === matchType;
+    });
+  },
 };
