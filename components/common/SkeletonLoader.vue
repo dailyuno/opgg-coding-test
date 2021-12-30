@@ -3,19 +3,13 @@
     class="skeleton-loader animation--wave"
     :class="inline ? 'skeleton-loader--inline' : ''"
   >
-    <skeleton-rect
-      v-if="type === 'rect'"
+    <component
+      :is="currentTypeComponent"
       :width="width"
       :height="height"
       :radius="radius"
-      :margin="margin"
-    ></skeleton-rect>
-    <skeleton-circle
-      v-else-if="type === 'circle'"
-      :width="width"
-      :height="height"
-      :margin="margin"
-    ></skeleton-circle>
+    >
+    </component>
   </div>
 </template>
 
@@ -41,15 +35,22 @@ export default {
     },
     radius: {
       type: Number,
-      default: 0,
-    },
-    margin: {
-      type: String,
-      default: "0",
+      default: 2,
     },
     inline: {
       type: Boolean,
       default: false,
+    },
+  },
+  computed: {
+    currentTypeComponent() {
+      switch (this.type) {
+        case "circle":
+          return SkeletonCircle;
+        case "rect":
+        default:
+          return SkeletonRect;
+      }
     },
   },
 };

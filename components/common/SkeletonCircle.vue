@@ -6,31 +6,11 @@
 </template>
 
 <script>
+import BaseSkeleton from "~/components/common/BaseSkeleton.vue";
+
 export default {
   name: "skeleton-circle",
-  props: {
-    width: {
-      type: Number,
-      required: true,
-    },
-    height: {
-      type: Number,
-      required: true,
-    },
-    margin: {
-      type: String,
-      default: "0",
-    },
-  },
-  computed: {
-    style() {
-      return {
-        width: `${this.width}px`,
-        height: `${this.height}px`,
-        margin: this.margin,
-      };
-    },
-  },
+  extends: BaseSkeleton,
 };
 </script>
 
