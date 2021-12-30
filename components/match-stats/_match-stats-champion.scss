@@ -1,5 +1,6 @@
 .match-stats-champion {
   display: flex;
+  align-items: center;
 
   &:not(:last-child) {
     padding-bottom: 8px;

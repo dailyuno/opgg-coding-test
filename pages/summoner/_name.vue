@@ -3,8 +3,7 @@
     <div class="app-layouts__container">
       <div class="summoner">
         <div class="summoner__header">
-          <summoner-overview-skeleton v-if="isLoading">
-          </summoner-overview-skeleton>
+          <summoner-overview-skeleton v-if="isLoading" />
           <summoner-overview :summoner="summoner" v-else></summoner-overview>
         </div>
         <div class="summoner__content">
@@ -42,9 +41,10 @@ import SummonerRank from "~/components/summoner-rank/SummonerRank";
 import SummonerRankSkeleton from "~/components/summoner-rank/SummonerRankSkeleton.vue";
 import SummonerMost from "~/components/summoner-most/SummonerMost";
 import SummonerMostSkeleton from "~/components/summoner-most/SummonerMostSkeleton.vue";
-import MatchOverview from "~/components/matches/MatchOverview";
+import MatchOverview from "~/components/match/MatchOverview";
 import SummonerOverview from "~/components/summoner/SummonerOverview.vue";
 import SummonerOverviewSkeleton from "~/components/summoner/SummonerOverviewSkeleton.vue";
+import MatchOverviewSkeleton from "~/components/match/MatchOverviewSkeleton.vue";
 
 export default {
   components: {
@@ -55,6 +55,7 @@ export default {
     SummonerRankSkeleton,
     SummonerOverviewSkeleton,
     SummonerMostSkeleton,
+    MatchOverviewSkeleton,
   },
   data() {
     return {

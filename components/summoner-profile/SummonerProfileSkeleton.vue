@@ -6,8 +6,12 @@
       </div>
     </div>
     <div class="summoner-profile-info">
-      <skeleton-loader :width="80" :height="22" />
-      <skeleton-loader :width="162" :height="15" margin="6px 0 0 0" />
+      <div class="summoner-profile-info__name">
+        <skeleton-loader :width="80" :height="22" />
+      </div>
+      <div class="summoner-profile-info__detail">
+        <skeleton-loader :width="162" :height="15" />
+      </div>
     </div>
   </div>
 </template>
