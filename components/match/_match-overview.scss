@@ -1,0 +1,36 @@
+.match-overview {
+  &__tabs {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    border: 1px solid #cdd2d2;
+    border-bottom: none;
+    box-shadow: 0 1px #dcdfdf;
+    background: #f2f2f2;
+    border-radius: 2px;
+    padding-left: 10px;
+  }
+
+  &__tab {
+    color: #555e5e;
+    font-size: 12px;
+    line-height: 32px;
+    margin: 0 10px;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+      cursor: pointer;
+      color: #222;
+    }
+
+    &--active {
+      color: #228eed;
+      font-weight: bold;
+      border-color: #228eed;
+    }
+  }
+
+  &__list {
+    margin-top: 10px;
+  }
+}

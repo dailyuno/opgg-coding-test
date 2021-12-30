@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import MatchListItem from "~/components/matches/MatchListItem";
+import MatchListItem from "~/components/match-list/MatchListItem";
 
 export default {
   props: {
@@ -24,7 +24,5 @@ export default {
 </script>
 
 <style lang="scss">
-.match-item-list {
-  width: 100%;
-}
+@import "match-list";
 </style>

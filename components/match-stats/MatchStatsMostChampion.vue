@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import MatchStatsChampion from "~/components/matches/MatchStatsChampion.vue";
+import MatchStatsChampion from "~/components/match-stats/MatchStatsChampion.vue";
 
 export default {
   components: { MatchStatsChampion },
@@ -21,11 +21,6 @@ export default {
 };
 </script>
 
-<style>
-.match-stats-most-champion {
-  width: 230px;
-  padding: 16px 0 16px 16px;
-  display: flex;
-  flex-direction: column;
-}
+<style lang="scss">
+@import "match-stats-most-champion";
 </style>

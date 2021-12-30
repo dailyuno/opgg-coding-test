@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import MatchStatsPosition from "~/components/matches/MatchStatsPosition.vue";
+import MatchStatsPosition from "~/components/match-stats/MatchStatsPosition.vue";
 export default {
   components: { MatchStatsPosition },
   props: {
@@ -29,22 +29,5 @@ export default {
 </script>
 
 <style lang="scss">
-.match-stats-most-position {
-  padding: 16px 0 14px 20px;
-  display: flex;
-  flex-direction: column;
-
-  &__title {
-    font-size: 12px;
-    color: #666;
-    padding-bottom: 12px;
-  }
-
-  &__items {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-  }
-}
+@import "match-stats-most-position";
 </style>

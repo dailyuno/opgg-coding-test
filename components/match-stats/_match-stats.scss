@@ -1,0 +1,13 @@
+.match-stats {
+  border: 1px solid #cdd2d2;
+  box-shadow: 0 1px #dcdfdf;
+  background: #ededed;
+  border-radius: 2px;
+  display: flex;
+
+  &__item {
+    &:not(:first-child) {
+      border-left: 1px solid #cdd2d2;
+    }
+  }
+}

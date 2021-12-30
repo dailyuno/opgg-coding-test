@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import MatchStatsMostChampion from "~/components/matches/MatchStatsMostChampion.vue";
-import MatchStatsMostPosition from "~/components/matches/MatchStatsMostPosition.vue";
-import MatchStatsSummary from "~/components/matches/MatchStatsSummary.vue";
+import MatchStatsMostChampion from "~/components/match-stats/MatchStatsMostChampion.vue";
+import MatchStatsMostPosition from "~/components/match-stats/MatchStatsMostPosition.vue";
+import MatchStatsSummary from "~/components/match-stats/MatchStatsSummary.vue";
 
 export default {
   components: {
@@ -41,17 +41,5 @@ export default {
 </script>
 
 <style lang="scss">
-.match-stats {
-  border: 1px solid #cdd2d2;
-  box-shadow: 0 1px #dcdfdf;
-  background: #ededed;
-  border-radius: 2px;
-  display: flex;
-
-  &__item {
-    &:not(:first-child) {
-      border-left: 1px solid #cdd2d2;
-    }
-  }
-}
+@import "match-stats";
 </style>
