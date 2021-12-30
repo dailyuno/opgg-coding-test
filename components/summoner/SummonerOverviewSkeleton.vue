@@ -1,5 +1,5 @@
 <template>
-  <div class="summoner-overview">
+  <div class="summoner-overview summoner-overview--skeleton">
     <div class="summoner-overview__badges">
       <skeleton-loader
         v-for="i in 3"
@@ -8,7 +8,7 @@
         :height="22"
         :radius="3"
         :inline="true"
-        margin="0 7px 0 0"
+        class="mr-2"
       ></skeleton-loader>
     </div>
     <summoner-profile-skeleton />
@@ -16,12 +16,13 @@
 </template>
 
 <script>
-import SummonerProfileSkeleton from "~/components/summoner/SummonerProfileSkeleton.vue";
+import SummonerProfileSkeleton from "~/components/summoner-profile/SummonerProfileSkeleton.vue";
+
 export default {
   components: { SummonerProfileSkeleton },
 };
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/summoner/overview";
+@import "summoner-overview";
 </style>
