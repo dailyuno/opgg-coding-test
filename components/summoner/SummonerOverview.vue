@@ -13,7 +13,7 @@
 
 <script>
 import SummonerBadge from "~/components/summoner/SummonerBadge.vue";
-import SummonerProfile from "~/components/summoner/SummonerProfile.vue";
+import SummonerProfile from "~/components/summoner-profile/SummonerProfile.vue";
 
 export default {
   components: { SummonerBadge, SummonerProfile },
@@ -26,5 +26,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/summoner/overview";
+@import "summoner-overview";
 </style>

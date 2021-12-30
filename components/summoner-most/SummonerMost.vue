@@ -31,13 +31,13 @@
 </template>
 
 <script>
-import SummonerMostChampion from "./SummonerMostChampion";
-import SummonerRecentChampion from "./SummonerRecentChampion";
+import SummonerMostChampion from "~/components/summoner-most/SummonerMostChampion.vue";
+import SummonerRecentChampion from "~/components/summoner-most/SummonerRecentChampion.vue";
 
 export default {
   components: {
-    SummonerMostChampion,
     SummonerRecentChampion,
+    SummonerMostChampion,
   },
   props: {
     mostInfo: {
@@ -53,25 +53,5 @@ export default {
 </script>
 
 <style lang="scss">
-.summoner-most {
-  border: 1px solid #cdd2d2;
-  box-shadow: 0 1px #dcdfdf;
-  background: #f2f2f2;
-  border-radius: 2px;
-
-  &__tab {
-    text-transform: capitalize;
-    text-align: center;
-    width: 50%;
-    border-bottom: 1px solid #cdd2d2;
-
-    &:not(:last-child) {
-      border-right: 1px solid #cdd2d2;
-    }
-  }
-
-  .v-slide-group {
-    background-color: #f2f2f2;
-  }
-}
+@import "summoner-most";
 </style>

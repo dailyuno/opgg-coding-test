@@ -1,0 +1,80 @@
+.summoner-most-champion {
+  display: flex;
+  align-items: center;
+  background: #f2f2f2;
+  color: #879292;
+  padding: 0 8px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #cdd2d2;
+  }
+
+  &__profile {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    padding: 4px 0;
+    box-sizing: content-box;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 90px;
+    padding-left: 10px;
+  }
+
+  &__name {
+    font-size: 13px;
+    font-weight: bold;
+    color: #555e5e;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__cs {
+    font-size: 12px;
+  }
+
+  &__stats {
+    flex: 1 0 auto;
+  }
+
+  &__kda-ratio {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  &__kda {
+    font-size: 11px;
+  }
+
+  &__kill,
+  &__death,
+  &__assist {
+    font-size: 12px;
+  }
+
+  &__games {
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__win-ratio {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  &__play {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,29 @@
+.summoner-most {
+  border: 1px solid $box-border;
+  box-shadow: 0 1px #dcdfdf;
+  background: $box-bg;
+  border-radius: 2px;
+
+  &__tab {
+    text-transform: capitalize;
+    text-align: center;
+    width: 50%;
+    background-color: $box-bg;
+    border-bottom: 1px solid $box-border;
+
+    &:not(:last-child) {
+      border-right: 1px solid $box-border;
+    }
+  }
+
+  .v-slide-group {
+    background-color: $box-bg;
+  }
+
+  &--skeleton &__tab {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
