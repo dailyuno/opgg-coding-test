@@ -12,7 +12,7 @@
             <template v-if="isLoading">
               <summoner-rank-skeleton />
               <summoner-rank-skeleton small />
-              <skeleton-loader width="300" height="265" margin="10px 0 0 0" />
+              <skeleton-loader :width="300" :height="265" margin="10px 0 0 0" />
             </template>
             <template v-else>
               <summoner-rank :league="summoner.leagues[0]"></summoner-rank>

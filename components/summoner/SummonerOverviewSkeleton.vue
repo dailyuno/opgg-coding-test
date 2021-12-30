@@ -4,10 +4,10 @@
       <skeleton-loader
         v-for="i in 3"
         :key="i"
-        width="80"
-        height="22"
-        radius="3"
-        inline="true"
+        :width="80"
+        :height="22"
+        :radius="3"
+        :inline="true"
         margin="0 7px 0 0"
       ></skeleton-loader>
     </div>
