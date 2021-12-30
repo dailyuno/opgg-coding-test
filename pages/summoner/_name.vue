@@ -12,7 +12,7 @@
             <template v-if="isLoading">
               <summoner-rank-skeleton />
               <summoner-rank-skeleton small />
-              <skeleton-loader :width="300" :height="265" margin="10px 0 0 0" />
+              <summoner-most-skeleton />
             </template>
             <template v-else>
               <summoner-rank :league="summoner.leagues[0]"></summoner-rank>
@@ -38,11 +38,12 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import SummonerRank from "~/components/summoner/SummonerRank";
-import SummonerMost from "~/components/summoner/SummonerMost";
+import SummonerRank from "~/components/summoner-rank/SummonerRank";
+import SummonerRankSkeleton from "~/components/summoner-rank/SummonerRankSkeleton.vue";
+import SummonerMost from "~/components/summoner-most/SummonerMost";
+import SummonerMostSkeleton from "~/components/summoner-most/SummonerMostSkeleton.vue";
 import MatchOverview from "~/components/matches/MatchOverview";
 import SummonerOverview from "~/components/summoner/SummonerOverview.vue";
-import SummonerRankSkeleton from "~/components/summoner/SummonerRankSkeleton.vue";
 import SummonerOverviewSkeleton from "~/components/summoner/SummonerOverviewSkeleton.vue";
 
 export default {
@@ -53,6 +54,7 @@ export default {
     SummonerOverview,
     SummonerRankSkeleton,
     SummonerOverviewSkeleton,
+    SummonerMostSkeleton,
   },
   data() {
     return {
