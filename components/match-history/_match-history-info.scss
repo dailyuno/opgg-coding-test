@@ -1,0 +1,39 @@
+.match-history-info {
+  width: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #555;
+
+  &__type {
+    font-weight: bold;
+  }
+
+  &__type,
+  &__time {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+
+  &__result {
+    font-weight: bold;
+  }
+}
+
+.match-item--win .match-item-info {
+  &__result {
+    color: #1a78ae;
+  }
+}
+
+.match-item--lose .match-item-info {
+  &__result {
+    color: #c6443e;
+  }
+}

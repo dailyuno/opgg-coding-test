@@ -18,10 +18,14 @@
         :champions="matches.champions"
         :positions="matches.positions"
       ></match-stats>
-      <match-list
-        :games="filterGames"
-        class="match-overview__list"
-      ></match-list>
+
+      <div class="match-overview__list">
+        <match-history
+          v-for="game in filterGames"
+          :key="game.gameId"
+          :game="game"
+        ></match-history>
+      </div>
     </div>
   </div>
 </template>
@@ -29,12 +33,12 @@
 <script>
 import { mapGetters, mapMutations } from "vuex";
 import MatchStats from "~/components/match-stats/MatchStats.vue";
-import MatchList from "~/components/match-list/MatchList.vue";
+import MatchHistory from "~/components/match-history/MatchHistory.vue";
 
 export default {
   components: {
     MatchStats,
-    MatchList,
+    MatchHistory,
   },
   props: {
     matches: {

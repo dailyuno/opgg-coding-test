@@ -1,0 +1,27 @@
+.match-history {
+  $self: &;
+  display: flex;
+  margin-bottom: 8px;
+  height: 96px;
+
+  &--win {
+    background-color: #a3cfec;
+    border-color: #99b9cf;
+  }
+
+  &--lose {
+    background-color: #e2b6b3;
+    border-color: #cea7a7;
+  }
+
+  &__teams {
+    display: flex;
+  }
+
+  &__team {
+    width: 85px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

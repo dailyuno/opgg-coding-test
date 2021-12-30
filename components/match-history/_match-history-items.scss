@@ -1,0 +1,26 @@
+.match-history-items {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
+
+  &__container {
+    width: 96px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__ward {
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+    color: #353a3a;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  &__ward-img {
+    margin-right: 2px;
+  }
+}

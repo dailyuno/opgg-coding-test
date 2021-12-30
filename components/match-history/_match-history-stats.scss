@@ -1,0 +1,13 @@
+.match-history-stats {
+  width: 90px;
+  font-size: 11px;
+  color: #555e5e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__ck-rate {
+    color: #c6443e;
+  }
+}

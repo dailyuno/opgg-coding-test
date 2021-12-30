@@ -1,0 +1,30 @@
+.match-history-setting {
+  width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__champion {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__champion-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__spells,
+  &__runes {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4px;
+  }
+
+  &__spell-img,
+  &__rune-img {
+    width: 22px;
+  }
+}

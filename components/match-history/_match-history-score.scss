@@ -1,0 +1,69 @@
+.match-history-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+
+  &__kda {
+    font-size: 15px;
+    color: #879292;
+  }
+
+  &__kill,
+  &__assist,
+  &__death {
+    font-weight: bold;
+  }
+
+  &__kill,
+  &__assist {
+    color: #555e5e;
+  }
+
+  &__death {
+    color: #c6443e;
+  }
+
+  &__ratio {
+    font-size: 12px;
+    font-weight: bold;
+    color: #353a3a;
+  }
+
+  &__badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__multikill,
+  &__opscore {
+    color: #f2f2f2;
+    border-radius: 15px;
+    padding: 2px 5px;
+    font-size: 10px;
+    margin-top: 8px;
+
+    &:nth-child(n + 2) {
+      margin-left: 4px;
+    }
+  }
+
+  &__multikill {
+    background: #ee5a52;
+    border: 1px solid #c6443e;
+  }
+
+  &__opscore {
+    &--mvp {
+      background-color: #e19205;
+      border: 1px solid #b88a2a;
+    }
+
+    &--ace {
+      background-color: #8c51c5;
+      border: solid 1px #7f3590;
+    }
+  }
+}
