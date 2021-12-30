@@ -36,7 +36,12 @@ export default {
   modules: ["nuxt-highcharts", "@nuxtjs/style-resources"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extractCSS: true,
+    optimizeCss: {
+      cssProcessorOptions: { safe: true },
+    },
+  },
 
   styleResources: {
     scss: ["~/assets/style/_variable.scss"],
