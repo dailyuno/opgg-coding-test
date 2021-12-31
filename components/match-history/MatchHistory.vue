@@ -65,7 +65,7 @@ export default {
     try {
       const {
         data: { teams },
-      } = await getMatchDetail(encodeURI(this.summoner.name));
+      } = await getMatchDetail(this.summoner.name);
       this.teams = teams;
     } catch (e) {
       console.log(e);
