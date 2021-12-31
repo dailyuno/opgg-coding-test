@@ -33,7 +33,11 @@ export default {
   buildModules: ["@nuxtjs/vuetify"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["nuxt-highcharts", "@nuxtjs/style-resources"],
+  modules: [
+    "nuxt-highcharts",
+    "@nuxtjs/style-resources",
+    ["cookie-universal-nuxt", { alias: "cookiz" }],
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
