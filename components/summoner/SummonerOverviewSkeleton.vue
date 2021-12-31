@@ -11,18 +11,30 @@
         class="mr-2"
       ></skeleton-loader>
     </div>
-    <summoner-profile-skeleton />
+
+    <div class="summoner-profile">
+      <div class="summoner-profile-img">
+        <div class="summoner-profile-img__container">
+          <skeleton-loader type="rect" :width="120" :height="120" />
+        </div>
+      </div>
+      <div class="summoner-profile-info">
+        <div class="summoner-profile-info__name">
+          <skeleton-loader :width="80" :height="22" />
+        </div>
+        <div class="summoner-profile-info__detail">
+          <skeleton-loader :width="162" :height="15" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import SummonerProfileSkeleton from "~/components/summoner-profile/SummonerProfileSkeleton.vue";
-
-export default {
-  components: { SummonerProfileSkeleton },
-};
+export default {};
 </script>
 
 <style lang="scss">
 @import "summoner-overview";
+@import "~/components/summoner-profile";
 </style>
