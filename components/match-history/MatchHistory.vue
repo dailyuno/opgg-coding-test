@@ -57,7 +57,7 @@ export default {
   computed: {
     ...mapGetters("summoner", ["summoner"]),
   },
-  async fetch() {
+  async created() {
     try {
       const {
         data: { teams },

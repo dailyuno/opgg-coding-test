@@ -7,6 +7,10 @@ $browser-context: 10;
 }
 
 @for $i from 1 to 10 {
+  .m-#{$i} {
+    margin: ($i * 0.25rem);
+  }
+
   .mt-#{$i} {
     margin-top: ($i * 0.25rem);
   }
@@ -29,6 +33,10 @@ $browser-context: 10;
 
   .my-#{$i} {
     margin: ($i * 0.25rem) 0;
+  }
+
+  .p-#{$i} {
+    padding: ($i * 0.25rem);
   }
 
   .pt-#{$i} {

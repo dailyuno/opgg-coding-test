@@ -14,11 +14,11 @@
 
   &__type,
   &__time {
-    width: 100%;
+    display: flex;
+    justify-content: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
   }
 
   &__result {

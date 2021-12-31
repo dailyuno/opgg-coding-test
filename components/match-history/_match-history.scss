@@ -3,6 +3,8 @@
   display: flex;
   margin-bottom: 8px;
   height: 96px;
+  background-color: $box-bg;
+  border: 1px solid $box-border;
 
   &--win {
     background-color: #a3cfec;

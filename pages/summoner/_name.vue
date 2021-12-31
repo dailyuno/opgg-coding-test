@@ -24,11 +24,8 @@
           </aside>
 
           <section class="summoner__matches">
-            <match-overview-skeleton />
-            <match-overview
-              :matches="matches"
-              v-if="!isLoading"
-            ></match-overview>
+            <match-overview-skeleton v-if="isLoading" />
+            <match-overview :matches="matches" v-else></match-overview>
           </section>
         </div>
       </div>

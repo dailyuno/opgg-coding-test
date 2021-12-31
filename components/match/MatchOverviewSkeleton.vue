@@ -5,6 +5,10 @@
     </div>
     <div class="match-overview__content">
       <match-stats-skeleton />
+
+      <div class="match-overview__list">
+        <match-history-skeleton v-for="i in 5" :key="i" />
+      </div>
     </div>
   </div>
 </template>
