@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import MatchStats from "~/components/match-stats/MatchStats.vue";
 import MatchHistory from "~/components/match-history/MatchHistory.vue";
 
@@ -68,7 +68,7 @@ export default {
     ...mapGetters("matches", ["matchType", "filterGames"]),
   },
   methods: {
-    ...mapMutations("matches", ["setMatchType"]),
+    ...mapActions("matches", ["setMatchType"]),
   },
 };
 </script>
