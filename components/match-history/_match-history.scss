@@ -17,14 +17,48 @@
   }
 
   &__teams {
+    width: 170px;
     display: flex;
     align-items: center;
   }
 
   &__team {
-    width: 85px;
+    width: 50%;
     display: flex;
     justify-content: center;
     flex-direction: column;
+  }
+
+  &__more {
+    width: 30px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &--win &__more {
+    border-color: #4aa1d2;
+    background: #64b1e4;
+  }
+
+  &--lose &__more {
+    border-color: #d67b77;
+    background: #e89d99;
+  }
+
+  &__button {
+    width: 13px;
+    height: 10px;
+    background-image: url("https://opgg-static.akamaized.net/assets/site.png?image=q_auto&v=1637122822");
+  }
+
+  &--win &__button {
+    background-position: -127px -3840px;
+  }
+
+  &--lose &__button {
+    background-position: -127px -3880px;
   }
 }

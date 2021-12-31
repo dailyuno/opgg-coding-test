@@ -17,7 +17,7 @@
     <match-history-items-skeleton />
 
     <div class="match-history__teams">
-      <skeleton-loader :width="180" :height="70" />
+      <skeleton-loader :width="170" :height="70" />
     </div>
   </div>
 </template>

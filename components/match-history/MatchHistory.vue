@@ -22,6 +22,10 @@
         ></match-history-player>
       </div>
     </div>
+
+    <div class="match-history__more">
+      <div class="match-history__button"></div>
+    </div>
   </div>
 </template>
 
