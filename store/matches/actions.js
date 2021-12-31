@@ -5,7 +5,7 @@ export default {
     const { data } = await getMatches(name);
     commit("matches", data);
   },
-  async setMatchType({ commit }, type) {
+  setMatchType({ commit }, type) {
     commit("matchType", type);
   },
 };

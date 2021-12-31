@@ -2,7 +2,7 @@ export default {
   matches(state, matches) {
     state.matches = matches;
   },
-  setMatchType(state, type) {
+  matchType(state, type) {
     state.matchType = type;
   },
 };
