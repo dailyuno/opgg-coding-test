@@ -1,0 +1,20 @@
+.search-history-item {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  margin-top: 15px;
+  font-size: 12px;
+
+  &__link {
+    color: $gray-600;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__ations {
+  }
+
+  &__action {
+    cursor: pointer;
+  }
+}

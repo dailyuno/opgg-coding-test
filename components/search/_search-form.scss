@@ -1,0 +1,32 @@
+.search-form {
+  display: flex;
+  background-color: $white;
+  border-radius: 4px;
+  width: 270px;
+  position: relative;
+
+  &__input {
+    width: 100%;
+    padding: 9px 42px 8px 14px;
+    font-size: 12px;
+    line-height: 15px;
+    outline: none;
+    border: none;
+    background-color: none;
+  }
+
+  &__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 32px;
+    width: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    height: 14px;
+  }
+}

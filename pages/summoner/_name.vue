@@ -1,17 +1,20 @@
 <template>
   <div class="app-layouts">
-    <div class="app-layouts__container">
-      <div class="summoner">
-        <div class="summoner__header">
+    <site-header></site-header>
+    <div class="summoner">
+      <div class="summoner__header">
+        <div class="container">
           <summoner-overview-skeleton v-if="isLoading" />
           <summoner-overview :summoner="summoner" v-else></summoner-overview>
         </div>
-        <div class="summoner__content">
+      </div>
+      <div class="summoner__content">
+        <div class="container d-flex">
           <aside class="summoner__detail">
             <template v-if="isLoading">
               <summoner-rank-skeleton />
               <summoner-rank-skeleton small />
-              <summoner-most-skeleton />
+              <summoner-most-skeleton class="mt-2" />
             </template>
             <template v-else>
               <summoner-rank :league="summoner.leagues[0]"></summoner-rank>
@@ -19,7 +22,7 @@
                 :league="summoner.leagues[1]"
                 small
               ></summoner-rank>
-              <summoner-most :mostInfo="mostInfo" />
+              <summoner-most :mostInfo="mostInfo" class="mt-2" />
             </template>
           </aside>
 
@@ -43,6 +46,7 @@ import MatchOverview from "~/components/match/MatchOverview";
 import SummonerOverview from "~/components/summoner/SummonerOverview.vue";
 import SummonerOverviewSkeleton from "~/components/summoner/SummonerOverviewSkeleton.vue";
 import MatchOverviewSkeleton from "~/components/match/MatchOverviewSkeleton.vue";
+import SiteHeader from "~/components/layout/SiteHeader.vue";
 
 export default {
   components: {
@@ -54,6 +58,7 @@ export default {
     SummonerOverviewSkeleton,
     SummonerMostSkeleton,
     MatchOverviewSkeleton,
+    SiteHeader,
   },
   data() {
     return {
@@ -67,10 +72,9 @@ export default {
   watch: {
     "$route.params.name": {
       immediate: true,
-      async handler() {
+      async handler(name) {
         try {
           this.isLoading = true;
-          const name = encodeURI(this.$route.params.name);
           await this.getSummoner(name);
           await this.getMostInfo(name);
           await this.getMatches(name);
@@ -89,36 +93,20 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  background: #eaeaea;
-}
-
-.app-layouts {
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-
-  &__container {
-    width: 1000px;
-  }
-}
-
 .summoner {
   &__header {
+    padding-top: 15px;
+    border-bottom: 1px solid $box-border;
   }
 
   &__content {
-    display: flex;
+    padding-top: 15px;
   }
 
   &__detail {
     flex: 1 0 300px;
     max-width: 300px;
     margin-right: 10px;
-
-    .summoner-most {
-      margin-top: 8px;
-    }
   }
 
   &__matches {
