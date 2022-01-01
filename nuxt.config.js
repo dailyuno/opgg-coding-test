@@ -39,6 +39,7 @@ export default {
     "nuxt-highcharts",
     "@nuxtjs/style-resources",
     ["cookie-universal-nuxt", { alias: "cookiz" }],
+    "@nuxtjs/i18n",
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -53,9 +54,33 @@ export default {
         _: "lodash",
       }),
     ],
+    extend(config) {
+      config.module.rules.push({
+        test: /\.ya?ml$/,
+        type: "json",
+        use: "yaml-loader",
+      });
+    },
   },
 
   styleResources: {
     scss: ["~/assets/style/_variable.scss"],
+  },
+
+  i18n: {
+    locales: [
+      {
+        name: "English",
+        code: "en",
+        file: "en.yaml",
+      },
+      {
+        name: "Korea",
+        code: "kr",
+        file: "kr.yaml",
+      },
+    ],
+    defaultLocale: "kr",
+    langDir: "~/locales/",
   },
 };
