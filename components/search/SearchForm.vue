@@ -1,12 +1,13 @@
 <template>
-  <form class="search-form" @submit.prevent="search">
+  <form class="search-form" @click.stop @submit.prevent="search">
     <input
       type="text"
       class="search-form__input"
       autocomplete="off"
       v-model="input"
       placeholder="소환사명,챔피언, ..."
-      @focus="showDropDown"
+      @focus="showHistoryList"
+      @input="showAutoCompleteList"
     />
     <button type="submit" class="search-form__button">
       <img
@@ -16,7 +17,7 @@
       />
     </button>
 
-    <search-history></search-history>
+    <search-history v-show="showHistory"></search-history>
   </form>
 </template>
 
@@ -31,6 +32,8 @@ export default {
   data() {
     return {
       input: "",
+      showHistory: false,
+      showAutoComplete: false,
     };
   },
   computed: {
@@ -40,7 +43,9 @@ export default {
     "$route.params.name": {
       immediate: true,
       handler(name) {
-        this.addSearchHistory(name);
+        if (name) {
+          this.updateSearchHistory(name);
+        }
       },
     },
   },
@@ -50,22 +55,42 @@ export default {
       "updateSearchHistory",
       "setFavoriteHistory",
     ]),
-    showDropDown() {},
-    addSearchHistory(name) {
-      if (name.trim() === "") return;
+    showHistoryList() {
+      this.showHistory = true;
+    },
+    hideHistoryList() {
+      this.showHistory = false;
+    },
+    showAutoCompleteList() {
+      const { input } = this;
 
-      this.updateSearchHistory(name);
+      if (input === "") {
+        this.showHistoryList();
+        return;
+      }
+
+      this.hideHistoryList();
     },
     search() {
-      this.addSearchHistory(this.input);
+      const { input } = this;
+
+      if (input.trim() === "") return;
+
+      this.updateSearchHistory(input);
 
       this.$router.push({
         name: "summoner-name",
         params: {
-          name: this.input,
+          name: input,
         },
       });
     },
+  },
+  mounted() {
+    window.addEventListener("click", this.hideHistoryList);
+  },
+  beforeDestroy() {
+    window.removeEventListener("click", this.hideHistoryList);
   },
 };
 </script>
