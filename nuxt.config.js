@@ -1,3 +1,5 @@
+import webpack from "webpack";
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
@@ -45,6 +47,12 @@ export default {
     optimizeCss: {
       cssProcessorOptions: { safe: true },
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+        // global modules
+        _: "lodash",
+      }),
+    ],
   },
 
   styleResources: {
