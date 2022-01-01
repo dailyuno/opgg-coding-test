@@ -4,10 +4,9 @@
       type="text"
       class="search-form__input"
       autocomplete="off"
-      v-model="input"
       placeholder="소환사명,챔피언, ..."
-      @focus="showHistoryList"
-      @input="showAutoCompleteList"
+      @focus="showDropDown"
+      @input="setAutoCompleteList"
     />
     <button type="submit" class="search-form__button">
       <img
@@ -18,22 +17,30 @@
     </button>
 
     <search-history v-show="showHistory"></search-history>
+    <search-auto-complete
+      v-show="showAutoComplete"
+      :summonerList="summonerList"
+    ></search-auto-complete>
   </form>
 </template>
 
 <script>
+import { getSummoner } from "~/api/opgg";
 import { mapGetters, mapActions } from "vuex";
+import SearchAutoComplete from "~/components/search/SearchAutoComplete.vue";
 import SearchHistory from "~/components/search/SearchHistory.vue";
 
 export default {
   components: {
     SearchHistory,
+    SearchAutoComplete,
   },
   data() {
     return {
       input: "",
       showHistory: false,
       showAutoComplete: false,
+      summonerList: [],
     };
   },
   computed: {
@@ -55,22 +62,35 @@ export default {
       "updateSearchHistory",
       "setFavoriteHistory",
     ]),
-    showHistoryList() {
-      this.showHistory = true;
-    },
-    hideHistoryList() {
-      this.showHistory = false;
-    },
-    showAutoCompleteList() {
-      const { input } = this;
-
-      if (input === "") {
-        this.showHistoryList();
+    showDropDown() {
+      if (this.input === "") {
+        this.showHistory = true;
+        this.showAutoComplete = false;
         return;
       }
 
-      this.hideHistoryList();
+      this.showHistory = false;
+      this.showAutoComplete = true;
     },
+    hideDropDown() {
+      this.showHistory = false;
+      this.showAutoComplete = false;
+    },
+    // eslint-disable-next-line no-undef
+    setAutoCompleteList: _.debounce(async function (e) {
+      this.input = e.target.value.replace(/ /g, "");
+      this.showDropDown();
+
+      if (this.showHistory) {
+        return;
+      }
+
+      const {
+        data: { summoner },
+      } = await getSummoner(this.input);
+
+      this.summonerList = [{ ...summoner }];
+    }),
     search() {
       const { input } = this;
 
@@ -87,10 +107,10 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener("click", this.hideHistoryList);
+    window.addEventListener("click", this.hideDropDown);
   },
   beforeDestroy() {
-    window.removeEventListener("click", this.hideHistoryList);
+    window.removeEventListener("click", this.hideDropDown);
   },
 };
 </script>
