@@ -1,5 +1,9 @@
 @import "variable.scss";
 
+body {
+  background: #eaeaea;
+}
+
 $browser-context: 10;
 
 @function rem($px, $context: $browser-context) {
@@ -92,6 +96,10 @@ $flexAlignList: (flex-start, flex-end, center);
   }
 }
 
+.h-full {
+  height: 100%;
+}
+
 .box-bg {
   background-color: $box-bg;
 }
@@ -102,4 +110,36 @@ $flexAlignList: (flex-start, flex-end, center);
 
 .box-shadow {
   box-shadow: 0 1px $box-shadow;
+}
+
+.container {
+  max-width: 1030px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &--favorite-on {
+    background-image: url("~/static/icons/favorite_on.png");
+  }
+
+  &--favorite-off {
+    background-image: url("~/static/icons/favorite_off.png");
+  }
+
+  &--close {
+    background-image: url("~/static/icons/close.png");
+  }
+
+  &--info {
+    background-image: url("~/static/icons/info.png");
+  }
 }
