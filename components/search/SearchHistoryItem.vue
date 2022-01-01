@@ -1,6 +1,11 @@
 <template>
   <div class="search-history-item">
-    <a href="#" class="search-history-item__link">{{ name }}</a>
+    <nuxt-link
+      :to="{ name: 'summoner-name', params: { name } }"
+      class="search-history-item__link"
+    >
+      {{ name }}
+    </nuxt-link>
     <div class="search-history-item__actions">
       <template v-if="bookmark">
         <i
