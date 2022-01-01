@@ -7,7 +7,7 @@
       {{ getDateFromNow }}
     </div>
     <div class="match-history-info__result">
-      {{ game.isWin ? "승리" : "패배" }}
+      {{ game.isWin ? $t("game.victory") : $t("game.defeat") }}
     </div>
     <div class="match-history-info__duration">
       {{ duration }}
@@ -26,13 +26,25 @@ export default {
   },
   computed: {
     getDateFromNow() {
+      moment.locale(this.$i18n.locale);
       return moment(this.game.createDate, "X").fromNow();
     },
     duration() {
-      return moment
-        .utc(this.game.gameLength * 1000)
-        .format("mm분ss초")
-        .replace(/^0/, "");
+      const date = moment.utc(this.game.gameLength * 1000);
+      const minute = parseInt(date.format("m"));
+      const second = parseInt(date.format("s"));
+
+      let text = "";
+
+      if (minute > 0) {
+        text += `${minute}${this.$t("time.minute")} `;
+      }
+
+      if (second > 0) {
+        text += `${second}${this.$t("time.second")}`;
+      }
+
+      return text;
     },
   },
 };

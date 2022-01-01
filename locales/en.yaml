@@ -1,0 +1,43 @@
+game:
+  solo: Ranked Solo
+  flex: Flex 5:5 Rank
+  unit: G
+  win: W
+  lose: L
+  victory: Victory
+  defeat: Defeat
+  win_rate: Win Ratio
+  kda: KDA
+  level: Level
+  ward: Control Ward
+  ck_rate: P/Kill
+
+time:
+  minute: m
+  second: s
+
+search_form:
+  placeholder: Name 1, Name2, ...
+
+summoner_profile_info:
+  title: Ladder Rank
+  rank_unit: ""
+  rank_rate: "{rank_rate}% of top"
+
+summoner_most:
+  champion: Champion Win Ratio
+  week: Rank win rate per week
+  played: played
+
+match_type:
+  all: Total
+  solo: Ranked Solo
+  flex: Ranked Flex
+
+position:
+  title: "Preferred Position (Rank)"
+  top: Top
+  jungle: Jungle
+  middle: Middle
+  bottom: Bottom
+  support: Support

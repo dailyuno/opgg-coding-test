@@ -1,7 +1,7 @@
 <template>
   <div class="search-history-item">
     <nuxt-link
-      :to="{ name: 'summoner-name', params: { name } }"
+      :to="localePath({ name: 'summoner-name', params: { name } })"
       class="search-history-item__link"
     >
       {{ name }}

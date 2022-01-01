@@ -1,0 +1,43 @@
+game:
+  solo: 솔랭
+  flex: 자유 5:5 랭크
+  unit: 전
+  win: 승
+  lose: 패
+  victory: 승리
+  defeat: 패배
+  win_rate: 승률
+  kda: 평점
+  level: 레벨
+  ward: 제어 와드
+  ck_rate: 킬관여
+
+time:
+  minute: 분
+  second: 초
+
+search_form:
+  placeholder: 소환사명,챔피언, ...
+
+summoner_profile_info:
+  title: 래더 랭킹
+  rank_unit: 위
+  rank_rate: 상위 {rank_rate}%
+
+summoner_most:
+  champion: 챔피언 승률
+  week: 7일간 랭크 승률
+  played: 게임
+
+match_type:
+  all: 전체
+  solo: 솔로랭크
+  flex: 자유랭크
+
+position:
+  title: "선호 포지션 (랭크)"
+  top: 탑
+  jungle: 정글
+  middle: 미드
+  bottom: 원딜
+  support: 서폿

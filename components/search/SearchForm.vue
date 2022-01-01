@@ -4,7 +4,7 @@
       type="text"
       class="search-form__input"
       autocomplete="off"
-      placeholder="소환사명,챔피언, ..."
+      :placeholder="$t('search_form.placeholder')"
       @focus="showDropDown"
       @input="setAutoCompleteList"
     />

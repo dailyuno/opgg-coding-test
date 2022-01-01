@@ -76,11 +76,11 @@ export default {
       },
       {
         name: "Korea",
-        code: "kr",
-        file: "kr.yaml",
+        code: "ko",
+        file: "ko.yaml",
       },
     ],
-    defaultLocale: "kr",
+    defaultLocale: "ko",
     langDir: "~/locales/",
   },
 };

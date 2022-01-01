@@ -15,7 +15,7 @@
     </div>
     <div class="match-history-score__ratio">
       <span>{{ game.stats.general.kdaString }}</span>
-      평점
+      {{ $t("game.kda") }}
     </div>
     <div class="match-history-score__badges">
       <div

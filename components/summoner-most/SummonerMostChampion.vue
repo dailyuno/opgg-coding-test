@@ -14,7 +14,9 @@
       <div class="summoner-most-champion__cs">CS {{ champion.cs }}</div>
     </div>
     <div class="summoner-most-champion__stats">
-      <div class="summoner-most-champion__kda-ratio">{{ kdaRatio }}:1 평점</div>
+      <div class="summoner-most-champion__kda-ratio">
+        {{ kdaRatio }}:1 {{ $t("game.kda") }}
+      </div>
       <div class="summoner-most-champion__kda">
         <span class="summoner-most-champion__kill">
           {{ champion.kills }}
@@ -31,7 +33,9 @@
     </div>
     <div class="summoner-most-champion__games">
       <div class="summoner-most-champion__win-ratio">{{ winRatio }}%</div>
-      <div class="summoner-most-champion__play">{{ champion.games }} 게임</div>
+      <div class="summoner-most-champion__play">
+        {{ champion.games }} {{ $t("summoner_most.played") }}
+      </div>
     </div>
   </div>
 </template>

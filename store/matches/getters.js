@@ -21,7 +21,7 @@ export default {
     const { matches, matchType } = state;
     const { games } = matches;
 
-    if (matchType === "전체") {
+    if (matchType === "all") {
       return games;
     }
 

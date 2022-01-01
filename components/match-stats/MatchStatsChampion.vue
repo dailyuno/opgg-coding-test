@@ -16,10 +16,11 @@
           {{ calcWinRatio(champion) }}%
         </span>
         <span class="match-stats-champion__win-lose">
-          ({{ champion.wins }}승 {{ champion.losses }}패)
+          ({{ champion.wins }}{{ $t("game.win") }} {{ champion.losses
+          }}{{ $t("game.lose") }})
         </span>
         <span class="match-stats-champion__kda">
-          {{ calcKdaRatio(champion) }} 평점
+          {{ calcKdaRatio(champion) }} {{ $t("game.kda") }}
         </span>
       </div>
     </div>

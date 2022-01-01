@@ -10,13 +10,15 @@
       ></div>
     </div>
     <div class="match-stats-position__content">
-      <div class="match-stats-position__name">{{ position.positionName }}</div>
+      <div class="match-stats-position__name">
+        {{ $t(`position.${position.positionName.toLowerCase()}`) }}
+      </div>
       <div class="match-stats-position__detail">
         <div class="match-stats-position__role-rate">
           {{ Math.floor((position.games / gameCount) * 100) }}%
         </div>
         <div class="match-stats-position__win-ratio">
-          승률 {{ calcWinRatio(position) }}%
+          {{ $t("game.win_rate") }} {{ calcWinRatio(position) }}%
         </div>
       </div>
     </div>

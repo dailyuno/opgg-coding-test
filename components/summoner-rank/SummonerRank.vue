@@ -9,7 +9,7 @@
     </div>
     <div class="summoner-rank__content">
       <div class="summoner-rank__type">
-        {{ league.tierRank.name }}
+        {{ type }}
       </div>
       <div class="summoner-rank__name">
         {{ league.tierRank.tier }}
@@ -17,10 +17,17 @@
       <div class="summoner-rank__info">
         <div class="summoner-rank__point">{{ league.tierRank.lp }} LP</div>
         /
-        <div class="summoner-rank__win">{{ league.wins }}승</div>
-        <div class="summoner-rank__lose">{{ league.losses }}패</div>
+        <div class="summoner-rank__win">
+          {{ league.wins }}{{ $t("game.win") }}
+        </div>
+        <div class="summoner-rank__lose">
+          {{ league.losses }}{{ $t("game.lose") }}
+        </div>
       </div>
-      <div class="summoner-rank__ratio">승률 {{ winRatio }}%</div>
+      <div class="summoner-rank__ratio">
+        {{ $t("game.win_rate") }}
+        {{ winRatio }}%
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +35,9 @@
 <script>
 export default {
   props: {
+    type: {
+      type: String,
+    },
     league: {
       type: Object,
     },

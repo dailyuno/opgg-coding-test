@@ -1,7 +1,9 @@
 <template>
   <div class="search-auto-complete-item">
     <nuxt-link
-      :to="{ name: 'summoner-name', params: { name: summoner.name } }"
+      :to="
+        localePath({ name: 'summoner-name', params: { name: summoner.name } })
+      "
       class="search-auto-complete-item__link"
     >
       <div class="search-auto-complete-item__profile">

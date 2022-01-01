@@ -49,16 +49,16 @@ export default {
     return {
       gameTypes: [
         {
-          id: "전체",
-          label: "전체",
+          id: "all",
+          label: this.$t("match_type.all"),
         },
         {
-          id: "솔랭",
-          label: "솔로랭크",
+          id: this.$t("game.solo"),
+          label: this.$t("match_type.solo"),
         },
         {
-          id: "자유 5:5 랭크",
-          label: "자유랭크",
+          id: this.$t("game.flex"),
+          label: this.$t("match_type.flex"),
         },
       ],
       tab: 0,

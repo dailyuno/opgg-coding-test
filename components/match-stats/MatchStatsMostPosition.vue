@@ -1,6 +1,8 @@
 <template>
   <div class="match-stats-most-position">
-    <div class="match-stats-most-position__title">선호 포지션 (랭크)</div>
+    <div class="match-stats-most-position__title">
+      {{ $t("position.title") }}
+    </div>
 
     <div class="match-stats-most-position__items">
       <match-stats-position

@@ -4,16 +4,17 @@
       {{ summoner.name }}
     </div>
     <div class="summoner-profile-info__detail">
-      래더 랭킹
+      {{ $t("summoner_profile_info.title") }}
       <span class="summoner-profile-info__rank">
-        {{
-          summoner.ladderRank.rank
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-        }} </span
-      >위
+        {{ rank }}
+      </span>
+      {{ $t("summoner_profile_info.rank_unit") }}
       <span class="summoner-profile-info__rank-ratio">
-        (상위 {{ summoner.ladderRank.rankPercentOfTop }}%)
+        ({{
+          $t("summoner_profile_info.rank_rate", {
+            rank_rate: summoner.ladderRank.rankPercentOfTop,
+          })
+        }})
       </span>
     </div>
   </div>
@@ -24,6 +25,13 @@ export default {
   props: {
     summoner: {
       type: Object,
+    },
+  },
+  computed: {
+    rank() {
+      return this.summoner.ladderRank.rank
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
   },
 };

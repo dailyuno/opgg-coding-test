@@ -65,7 +65,7 @@ export default {
     try {
       const {
         data: { teams },
-      } = await getMatchDetail(this.summoner.name);
+      } = await getMatchDetail(this.summoner.name, this.$i18n.locale);
       this.teams = teams;
     } catch (e) {
       console.log(e);

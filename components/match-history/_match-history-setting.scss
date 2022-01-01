@@ -1,8 +1,19 @@
 .match-history-setting {
   width: 110px;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+  }
 
   &__champion {
     width: 46px;

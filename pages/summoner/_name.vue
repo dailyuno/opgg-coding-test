@@ -17,8 +17,12 @@
               <summoner-most-skeleton class="mt-2" />
             </template>
             <template v-else>
-              <summoner-rank :league="summoner.leagues[0]"></summoner-rank>
               <summoner-rank
+                :type="$t('game.solo')"
+                :league="summoner.leagues[0]"
+              ></summoner-rank>
+              <summoner-rank
+                :type="$t('game.flex')"
                 :league="summoner.leagues[1]"
                 small
               ></summoner-rank>

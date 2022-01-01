@@ -10,7 +10,7 @@
     </div>
     <div class="match-history-items__ward">
       <img :src="ward" alt="" class="match-history-items__ward-img" />
-      제어 와드 {{ game.stats.ward.visionWardsBought }}
+      {{ $t("game.ward") }} {{ game.stats.ward.visionWardsBought }}
     </div>
   </div>
 </template>

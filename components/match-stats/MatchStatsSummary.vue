@@ -1,7 +1,8 @@
 <template>
   <div class="match-stats-summary">
     <div class="match-stats-summary__title">
-      {{ games.length }}전 {{ wins }}승 {{ losses }}패
+      {{ games.length }}{{ $t("game.unit") }} {{ wins }}{{ $t("game.win") }}
+      {{ losses }}{{ $t("game.lose") }}
     </div>
     <div class="match-stats-summary__content">
       <div class="match-stats-summary__graph-container">

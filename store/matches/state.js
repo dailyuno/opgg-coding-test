@@ -1,4 +1,4 @@
 export default () => ({
   matches: [],
-  matchType: "전체",
+  matchType: "all",
 });

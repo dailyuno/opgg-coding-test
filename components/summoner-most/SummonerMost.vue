@@ -1,29 +1,40 @@
 <template>
   <div class="summoner-most">
-    <v-tabs v-model="tab">
+    <v-tabs v-model="tab" :hide-slider="true">
       <v-tab
         :ripple="false"
-        v-for="(info, key) in mostInfo"
-        :key="key"
         class="summoner-most__tab"
+        active-class="summoner-most__tab--active"
+        v-for="mostTab in mostTabs"
+        :key="mostTab"
       >
-        {{ key }}
+        {{ $t(mostTab) }}
       </v-tab>
     </v-tabs>
 
     <v-tabs-items v-model="tab">
-      <v-tab-item :transition="false">
+      <v-tab-item
+        :transition="false"
+        class="summoner-most__items"
+        active-class="summoner-most__items--active"
+      >
         <summoner-most-champion
           v-for="(champion, index) in mostInfo.champions"
           :key="index"
           :champion="champion"
+          class="summoner-most__item"
         />
       </v-tab-item>
-      <v-tab-item :transition="false">
+      <v-tab-item
+        :transition="false"
+        class="summoner-most__items"
+        active-class="summoner-most__items--active"
+      >
         <summoner-recent-champion
           v-for="(champion, index) in mostInfo.recentWinRate"
           :key="index"
           :champion="champion"
+          class="summoner-most__item"
         />
       </v-tab-item>
     </v-tabs-items>
@@ -47,6 +58,7 @@ export default {
   data() {
     return {
       tab: 0,
+      mostTabs: ["summoner_most.champion", "summoner_most.week"],
     };
   },
 };
