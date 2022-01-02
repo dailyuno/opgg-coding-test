@@ -53,6 +53,7 @@ import MatchOverviewSkeleton from "~/components/match/MatchOverviewSkeleton.vue"
 import SiteHeader from "~/components/layout/SiteHeader.vue";
 
 export default {
+  middleware: ["summoner"],
   components: {
     SummonerRank,
     SummonerMost,
