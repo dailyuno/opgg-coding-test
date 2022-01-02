@@ -50,15 +50,15 @@
 
   &__button {
     width: 13px;
-    height: 10px;
-    background-image: url("https://opgg-static.akamaized.net/assets/site.png?image=q_auto&v=1637122822");
+    height: 9px;
+    background-size: cover;
   }
 
   &--win &__button {
-    background-position: -127px -3840px;
+    background-image: url("~/static/images/icons/arrow_blue.png");
   }
 
   &--lose &__button {
-    background-position: -127px -3880px;
+    background-image: url("~/static/images/icons/arrow_red.png");
   }
 }

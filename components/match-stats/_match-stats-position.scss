@@ -13,37 +13,28 @@
   }
 
   &__icon-img {
-    height: 100%;
-    background-image: url("https://opgg-static.akamaized.net/assets/site.png?image=q_auto&v=1637122822");
+    width: 28px;
+    height: 28px;
+    background-size: cover;
 
     &--top {
-      background-position: -112px -2844px;
-      width: 28px;
-      height: 28px;
+      background-image: url("~/static/images/position/top.png");
     }
 
     &--jungle {
-      background-position: -116px -2613px;
-      width: 24px;
-      height: 28px;
+      background-image: url("~/static/images/position/jug.png");
     }
 
     &--support {
-      background-position: -104px -2768px;
-      width: 36px;
-      height: 26px;
+      background-image: url("~/static/images/position/sup.png");
     }
 
     &--bottom {
-      background-position: -112px -2536px;
-      width: 28px;
-      height: 28px;
+      background-image: url("~/static/images/position/adc.png");
     }
 
     &--middle {
-      background-position: -112px -2691px;
-      width: 28px;
-      height: 28px;
+      background-image: url("~/static/images/position/mid.png");
     }
   }
 

@@ -128,18 +128,18 @@ $flexAlignList: (flex-start, flex-end, center);
   background-position: center;
 
   &--favorite-on {
-    background-image: url("~/static/icons/favorite_on.png");
+    background-image: url("~/static/images/icons/favorite_on.png");
   }
 
   &--favorite-off {
-    background-image: url("~/static/icons/favorite_off.png");
+    background-image: url("~/static/images/icons/favorite_off.png");
   }
 
   &--close {
-    background-image: url("~/static/icons/close.png");
+    background-image: url("~/static/images/icons/close.png");
   }
 
   &--info {
-    background-image: url("~/static/icons/info.png");
+    background-image: url("~/static/images/icons/info.png");
   }
 }

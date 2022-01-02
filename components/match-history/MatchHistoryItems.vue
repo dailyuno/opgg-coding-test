@@ -7,9 +7,13 @@
         :empty="i >= game.items.length"
         :item="game.items[i]"
       ></match-history-item>
+      <match-history-item>
+        <img :src="image" alt="" class="match-history-item__img" />
+      </match-history-item>
     </div>
     <div class="match-history-items__ward">
       <img :src="ward" alt="" class="match-history-items__ward-img" />
+
       {{ $t("game.ward") }} {{ game.stats.ward.visionWardsBought }}
     </div>
   </div>
@@ -23,11 +27,15 @@ export default {
     },
   },
   computed: {
+    image() {
+      return this.game.isWin
+        ? "/images/icons/item_blue.png"
+        : "/images/icons/item_red.png";
+    },
     ward() {
-      if (this.game.isWin) {
-        return "https://opgg-static.akamaized.net/images/site/summoner/icon-ward-blue.png";
-      }
-      return "https://opgg-static.akamaized.net/images/site/summoner/icon-ward-red.png";
+      return this.game.isWin
+        ? "/images/icons/ward_blue.png"
+        : "/images/icons/ward_red.png";
     },
   },
 };

@@ -4,11 +4,12 @@
     :class="empty ? 'match-history-item--empty' : ''"
   >
     <img
-      v-if="!empty"
+      v-if="!empty && item"
       :src="item.imageUrl"
       alt=""
       class="match-history-item__img"
     />
+    <slot></slot>
   </div>
 </template>
 
