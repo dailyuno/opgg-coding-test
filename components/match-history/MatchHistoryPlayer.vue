@@ -5,9 +5,17 @@
       alt=""
       class="match-history-player__img"
     />
-    <span class="match-history-player__name">
+    <nuxt-link
+      :to="
+        localePath({
+          name: 'summoner-name',
+          params: { name: player.summonerName },
+        })
+      "
+      class="match-history-player__name"
+    >
       {{ player.summonerName }}
-    </span>
+    </nuxt-link>
   </div>
 </template>
 

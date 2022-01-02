@@ -98,12 +98,14 @@ export default {
 
       this.updateSearchHistory(input);
 
-      this.$router.push({
-        name: "summoner-name",
-        params: {
-          name: input,
-        },
-      });
+      this.$router.push(
+        this.localePath({
+          name: "summoner-name",
+          params: {
+            name: input,
+          },
+        }),
+      );
     },
   },
   mounted() {
