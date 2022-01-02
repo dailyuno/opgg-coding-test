@@ -16,6 +16,9 @@ time:
   minute: m
   second: s
 
+main:
+  title: OP.GG Summoner Search.
+
 search_form:
   placeholder: Name 1, Name2, ...
 

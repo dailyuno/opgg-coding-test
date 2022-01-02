@@ -8,7 +8,7 @@
           <img src="images/no_summoner.png" alt="" class="no-summoner__img" />
         </div>
         <div class="no-summoner__content">
-          <h2 class="no-summoner__title">OP.GG 소환사 검색 기능입니다.</h2>
+          <h2 class="no-summoner__title">{{ $t("main.title") }}</h2>
           <div class="no-summoner__search">
             <search-form class="no-summoner__form"></search-form>
           </div>
@@ -37,10 +37,11 @@ export default {
 
   &__header {
     text-align: center;
+    height: 143px;
   }
 
   &__img {
-    width: 350px;
+    height: 100%;
   }
 
   &__title {
@@ -50,7 +51,7 @@ export default {
   }
 
   &__search {
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
   }
