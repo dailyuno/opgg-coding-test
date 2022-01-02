@@ -5,4 +5,34 @@
   display: flex;
   background-color: #5383e8;
   border-bottom: 1px solid #4171d6;
+
+  &__container {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+  }
+
+  &__form {
+    width: 270px;
+  }
+
+  &__locales {
+    margin-bottom: 20px;
+  }
+
+  &__locale-link {
+    text-decoration: none;
+    color: $white;
+    font-size: 12px;
+
+    &:not(:last-child):after {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 10px;
+      margin: 0 2px;
+      background-color: $white;
+      opacity: 0.7;
+    }
+  }
 }

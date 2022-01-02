@@ -1,8 +1,18 @@
 <template>
   <header class="site-header">
     <div class="container">
-      <div class="d-flex align-items-flex-end justify-content-flex-end h-full">
-        <search-form></search-form>
+      <div class="site-header__container">
+        <div class="site-header__locales">
+          <nuxt-link
+            v-for="locale in $i18n.locales"
+            :key="locale.code"
+            :to="switchLocalePath(locale.code)"
+            class="site-header__locale-link"
+          >
+            {{ locale.name }}
+          </nuxt-link>
+        </div>
+        <search-form class="site-header__form"></search-form>
       </div>
     </div>
   </header>

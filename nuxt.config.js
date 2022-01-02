@@ -75,7 +75,7 @@ export default {
         file: "en.yaml",
       },
       {
-        name: "Korea",
+        name: "한국어",
         code: "ko",
         file: "ko.yaml",
       },
